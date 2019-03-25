@@ -166,20 +166,20 @@ describe("addVAT", () => {
 
 // getSalePrice function
 describe("getSalePrice", () => {
-  test("reduces a price of 100 by 50%", () => {
+  test.only("reduces a price of 100 by 50%", () => {
     expect(getSalePrice(100, 50)).toBe(50);
   });
 
-  test("reduces a price of 100 by 33.3%", () => {
+  test.only("reduces a price of 100 by 33.3%", () => {
     expect(getSalePrice(100, 33.3)).toBe(66.7);
   });
 
-  test("reduces a price of 79.99 by 15%", () => {
+  test.only("reduces a price of 79.99 by 15%", () => {
     expect(getSalePrice(79.99, 15)).toBe(67.99);
   });
 
-  test("reduces a price of 50 by 0%", () => {
-    expect(getSalePrice(50, 0)).toBe(0);
+  test.only("reduces a price of 50 by 0%", () => {
+    expect(getSalePrice(50, 0)).toBe(50);
   });
 });
 
