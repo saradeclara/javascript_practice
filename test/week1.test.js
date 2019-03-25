@@ -349,6 +349,18 @@ describe("countLinuxUsers", () => {
     }).toThrow(Error);
   });
 
+  test.only("string input. function to throw error.", () => {
+    expect(() => {
+      countLinuxUsers("123");
+    }).toThrow(Error);
+  });
+
+  test.only("boolean input. function to throw error.", () => {
+    expect(() => {
+      countLinuxUsers(true);
+    }).toThrow(Error);
+  });
+
   test.only("undefined input. function to throw error.", () => {
     expect(() => {
       countLinuxUsers();
