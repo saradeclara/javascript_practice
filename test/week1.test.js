@@ -320,7 +320,7 @@ describe("reverseAllWords", () => {
 });
 
 describe("countLinuxUsers", () => {
-  test("returns 0 if no Linux users found", () => {
+  test.only("returns 0 if no Linux users found", () => {
     const users = [
       { name: "Heather", OS: "Windows 8", type: "Windows" },
       { name: "Paul", OS: "Firefox OS", type: "Unknown" },
@@ -330,7 +330,7 @@ describe("countLinuxUsers", () => {
     expect(countLinuxUsers(users)).toBe(0);
   });
 
-  test("returns the correct number of Linux users found", () => {
+  test.only("returns the correct number of Linux users found", () => {
     const users = [
       { name: "Heather", OS: "Ubuntu 18.04", type: "Linux" },
       { name: "Paul", OS: "Ubuntu 16.04", type: "Linux" },
