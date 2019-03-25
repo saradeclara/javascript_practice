@@ -319,6 +319,7 @@ describe("reverseAllWords", () => {
 
 });
 
+// countLinuxUsers function
 describe("countLinuxUsers", () => {
   test("returns 0 if no Linux users found", () => {
     const users = [
