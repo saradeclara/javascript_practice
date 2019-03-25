@@ -281,15 +281,40 @@ describe("reverseWord", () => {
 });
 
 describe("reverseAllWords", () => {
-  test("reverses a single word in an array", () => {
+  test.only("reverses a single word in an array", () => {
     expect(reverseAllWords(["jest"])).toEqual(["tsej"]);
   });
 
-  test("reverses a multiple words in an array", () => {
+  test.only("reverses a multiple words in an array", () => {
     expect(
       reverseAllWords(["jest", "mocha", "rspec", "jasmine", "selenium"])
     ).toEqual(["tsej", "ahcom", "cepsr", "enimsaj", "muineles"]);
   });
+
+  test.only("string input. only arrays allowed", () => {
+    expect(() => {
+      reverseAllWords("jest mocha rspec");
+      }).toThrow(Error);
+  });
+
+  test.only("integer input. only arrays allowed", () => {
+    expect(() => {
+      reverseAllWords(123);
+      }).toThrow(Error);
+  });
+
+  test.only("boolean input. only arrays allowed", () => {
+    expect(() => {
+      reverseAllWords(true);
+      }).toThrow(Error);
+  });
+
+  test.only("undefined input. function to throw error.", () => {
+    expect(() => {
+      reverseAllWords();
+      }).toThrow(Error);
+  });
+
 });
 
 describe("countLinuxUsers", () => {
