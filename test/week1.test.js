@@ -11,6 +11,7 @@ const {
   simpleFizzBuzz
 } = require("../challenges/week1");
 
+// capitalize function
 describe("capitalize", () => {
   test.only("returns a capitalized string", () => {
     expect(capitalize("hello")).toBe("Hello");
@@ -23,22 +24,78 @@ describe("capitalize", () => {
   test.only("capitalizes the first character if the string is a sentence", () => {
     expect(capitalize("the quick fox")).toBe("The quick fox");
   });
-});
 
-test.only("word is required", () => {
+
+test.only("undefined input. function to throw error.", () => {
   expect(() => {
     capitalize();
   }).toThrow(Error)});
 
-test.only("only strings allowed", () => {
+test.only("integer input. function to throw error.", () => {
   expect(() => {
     capitalize(123);
   }).toThrow(Error)
 });
 
+test.only("boolean input. function to throw error.", () => {
+  expect(() => {
+    capitalize(true);
+  }).toThrow(Error)
+});
+});
+
+// generateInitials function
 describe("generateInitials", () => {
-  test("returns the initials of a firstname and surname", () => {
+  test.only("returns the initials of a firstname and surname", () => {
     expect(generateInitials("Frederic", "Bonneville")).toBe("F.B");
+  });
+});
+
+describe("generateInitials", () => {
+  test.only("returns the initials of firstnames (more than one) and a surname", () => {
+    expect(generateInitials("Mary Jane", "Bonneville")).toBe("M.J.B");
+  });
+});
+
+describe("generateInitials", () => {
+  test.only("returns the initials of a firstname and surnames (more than one)", () => {
+    expect(generateInitials("Mary", "Bonneville Warner")).toBe("M.B.W");
+  });
+});
+
+describe("generateInitials", () => {
+  test.only("returns the initials of firstnames (more than one) and surnames (more than one)", () => {
+    expect(generateInitials("Mary Jane", "Bonneville Warner")).toBe("M.J.B.W");
+  });
+});
+
+describe("generateInitials", () => {
+  test.only("returns the initials of a firstname and surnames (more than one)", () => {
+    expect(generateInitials("Mary", "Bonneville Warner")).toBe("M.B.W");
+  });
+});
+
+describe("generateInitials", () => {
+  test.only("undefined input. function to throw error.", () => {
+    expect(() => {
+      generateInitials();
+    }).toThrow(Error);
+  });
+});
+
+describe("generateInitials", () => {
+  test.only("integer input. function to throw error.", () => {
+    expect(() => {
+      generateInitials(1,2);
+    }).toThrow(Error);
+  });
+});
+
+describe("generateInitials", () => {
+  test.only("boolean input. function to throw error.", () => {
+    expect(() => {
+      generateInitials(true, false);
+    }).toThrow(Error);
   });
 });
 

@@ -1,6 +1,6 @@
 function capitalize(word) {
   if (word === undefined) throw new Error("word is required");
-  if (typeof word !== "string") throw new Error("only strings allowed");
+
   const capitalizedWord = word[0].toUpperCase() + word.slice(1);
   return capitalizedWord;
 }
@@ -8,7 +8,23 @@ function capitalize(word) {
 function generateInitials(firstName, lastName) {
   if (firstName === undefined) throw new Error("firstName is required");
   if (lastName === undefined) throw new Error("lastName is required");
-  // Add your code here!
+
+  const firstNameArray = firstName.split(" ");
+  const lastNameArray = lastName.split(" ");
+  let fullNameArray = [];
+
+  const firstNameInitials = firstNameArray.map(function(item) {
+    return item[0].toUpperCase();
+  });
+
+  const lastNameInitials = lastNameArray.map(function(item) {
+    return item[0].toUpperCase();
+  });
+
+  fullNameArray = firstNameInitials.concat(lastNameInitials);
+  const fullNameInitials = fullNameArray.join(".");
+
+  return fullNameInitials;
 }
 
 function addVAT(originalPrice, vatRate) {
