@@ -150,8 +150,21 @@ describe("addVAT", () => {
       addVAT("50", "20");
     }).toThrow(Error);
   });
+
+  test.only("price type is NOT legal. VAT type is legal. function to throw error.", () => {
+    expect(() => {
+      addVAT("milk", 20);
+    }).toThrow(Error);
+  });
+
+  test.only("price type is  legal. VAT type is NOT legal. function to throw error.", () => {
+    expect(() => {
+      addVAT(300, "twenty");
+    }).toThrow(Error);
+  });
 });
 
+// getSalePrice function
 describe("getSalePrice", () => {
   test("reduces a price of 100 by 50%", () => {
     expect(getSalePrice(100, 50)).toBe(50);
