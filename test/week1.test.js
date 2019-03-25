@@ -150,7 +150,6 @@ describe("addVAT", () => {
       addVAT("50", "20");
     }).toThrow(Error);
   });
-
 });
 
 describe("getSalePrice", () => {
