@@ -208,7 +208,7 @@ describe("getSalePrice", () => {
 
 });
 
-//getMiddleCharacter
+//getMiddleCharacter function
 describe("getMiddleCharacter", () => {
   test.only("returns the middle character from a string of odd length", () => {
     expect(getMiddleCharacter("bears!!!!")).toBe("s");
@@ -243,6 +243,7 @@ describe("getMiddleCharacter", () => {
   }); 
 });
 
+// reverseWord function
 describe("reverseWord", () => {
   test.only("returns the provided word, reversed", () => {
     expect(reverseWord("foo")).toBe("oof");
@@ -280,6 +281,7 @@ describe("reverseWord", () => {
 
 });
 
+// reverseAllWords function
 describe("reverseAllWords", () => {
   test.only("reverses a single word in an array", () => {
     expect(reverseAllWords(["jest"])).toEqual(["tsej"]);
