@@ -217,6 +217,30 @@ describe("getMiddleCharacter", () => {
   test.only("returns the middle 2 characters from a string of even length", () => {
     expect(getMiddleCharacter("help!!")).toBe("lp");
   });
+
+  test.only("empty string. fuction to throw error.", () => {
+    expect(() => {
+      getMiddleCharacter("");
+    }).toThrow(Error);
+  });  
+
+  test.only("undefined input. fuction to throw error.", () => {
+    expect(() => {
+      getMiddleCharacter();
+    }).toThrow(Error);
+  }); 
+
+  test.only("string input. fuction to throw error.", () => {
+    expect(() => {
+      getMiddleCharacter(123);
+    }).toThrow(Error);
+  }); 
+
+  test.only("boolean input. fuction to throw error.", () => {
+    expect(() => {
+      getMiddleCharacter(false);
+    }).toThrow(Error);
+  }); 
 });
 
 describe("reverseWord", () => {

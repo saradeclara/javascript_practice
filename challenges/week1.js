@@ -46,9 +46,9 @@ function getSalePrice(originalPrice, reduction) {
 }
 
 function getMiddleCharacter(str) {
-  if (str === undefined) throw new Error("str is required");
+  if (str === undefined || str === "") throw new Error("str is required");
   let index1, index2;
-  
+
   if (str.length % 2 === 0) {
     index1 = (str.length / 2) - 1;
     index2 = (str.length / 2) + 1;
