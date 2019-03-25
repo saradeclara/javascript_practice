@@ -253,6 +253,31 @@ describe("reverseWord", () => {
       "?siht od ot tnaw neve uoy dluow yhw"
     );
   });
+
+  test.only("undefined input. function to throw error.", () => {
+    expect(() => {
+      reverseWord();
+    }).toThrow(Error);
+  });
+
+  test.only("empty string. function to throw error.", () => {
+    expect(() => {
+      reverseWord("");
+    }).toThrow(Error);
+  });
+
+  test.only("number input. function to throw error.", () => {
+    expect(() => {
+      reverseWord(123);
+    }).toThrow(Error);
+  });
+
+  test.only("boolean input. function to throw error.", () => {
+    expect(() => {
+      reverseWord(true);
+    }).toThrow(Error);
+  });
+
 });
 
 describe("reverseAllWords", () => {
