@@ -101,6 +101,7 @@ function countLinuxUsers(users) {
 
 function getMeanScore(scores) {
   if (scores === undefined) throw new Error("scores is required");
+  if (scores.length === 0) throw new Error("empty array. scores is required");
   const scoresLength = scores.length;
   let scoresSum = 0;
   scores.forEach(function (item) {

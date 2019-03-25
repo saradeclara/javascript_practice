@@ -386,6 +386,14 @@ describe("getMeanScore", () => {
   test.only("returns the mean to 2 decimal places", () => {
     expect(getMeanScore([24, 44, 56, 11, 12, 17, 34])).toBe(28.29);
   });
+
+  test.only("empty array. function to throw error.", () => {
+    expect(() => {
+      const scores = [];
+      getMeanScore(scores);
+    }).toThrow(Error);
+  });
+
 });
 
 describe("simpleFizzBuzz", () => {
