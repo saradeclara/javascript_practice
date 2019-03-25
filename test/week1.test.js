@@ -394,6 +394,24 @@ describe("getMeanScore", () => {
     }).toThrow(Error);
   });
 
+  test.only("undefined input. function to throw error.", () => {
+    expect(() => {
+      getMeanScore();
+    }).toThrow(Error);
+  });
+
+  test.only("string input. function to throw error.", () => {
+    expect(() => {
+      getMeanScore("twenty, thirty, five");
+    }).toThrow(Error);
+  });
+
+  test.only("boolean input. function to throw error.", () => {
+    expect(() => {
+      getMeanScore(true);
+    }).toThrow(Error);
+  });
+
 });
 
 describe("simpleFizzBuzz", () => {
