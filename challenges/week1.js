@@ -101,7 +101,15 @@ function countLinuxUsers(users) {
 
 function getMeanScore(scores) {
   if (scores === undefined) throw new Error("scores is required");
-  // Add your code here!
+  if (scores.length === 0) throw new Error("empty array. scores is required");
+  const scoresLength = scores.length;
+  let scoresSum = 0;
+  scores.forEach(function (item) {
+    scoresSum = scoresSum + item;
+  });
+  let meanScore = scoresSum / scoresLength;
+  meanScore = Math.round(meanScore * 100) / 100;
+  return meanScore;
 }
 
 function simpleFizzBuzz(n) {
