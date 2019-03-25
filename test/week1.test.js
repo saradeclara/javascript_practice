@@ -208,12 +208,13 @@ describe("getSalePrice", () => {
 
 });
 
+//getMiddleCharacter
 describe("getMiddleCharacter", () => {
-  test("returns the middle character from a string of odd length", () => {
+  test.only("returns the middle character from a string of odd length", () => {
     expect(getMiddleCharacter("bears!!!!")).toBe("s");
   });
 
-  test("returns the middle 2 characters from a string of even length", () => {
+  test.only("returns the middle 2 characters from a string of even length", () => {
     expect(getMiddleCharacter("help!!")).toBe("lp");
   });
 });
