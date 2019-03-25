@@ -12,17 +12,28 @@ const {
 } = require("../challenges/week1");
 
 describe("capitalize", () => {
-  test("returns a capitalized string", () => {
+  test.only("returns a capitalized string", () => {
     expect(capitalize("hello")).toBe("Hello");
   });
 
-  test("does nothing if the string is already capitalized", () => {
+  test.only("does nothing if the string is already capitalized", () => {
     expect(capitalize("Hello")).toBe("Hello");
   });
 
-  test("capitalizes the first character if the string is a sentence", () => {
+  test.only("capitalizes the first character if the string is a sentence", () => {
     expect(capitalize("the quick fox")).toBe("The quick fox");
   });
+});
+
+test.only("word is required", () => {
+  expect(() => {
+    capitalize();
+  }).toThrow(Error)});
+
+test.only("only strings allowed", () => {
+  expect(() => {
+    capitalize(123);
+  }).toThrow(Error)
 });
 
 describe("generateInitials", () => {
@@ -143,7 +154,7 @@ describe("simpleFizzBuzz", () => {
   });
 
   test("returns 'buzz' if the number is divisible by 5", () => {
-    expect(simpleFizzBuzz(3)).toBe("buzz");
+    expect(simpleFizzBuzz(5)).toBe("buzz");
   });
 
   test("returns the number if the number is divisible by neither 3 nor 5", () => {
