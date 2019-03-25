@@ -145,9 +145,9 @@ describe("addVAT", () => {
     }).toThrow(Error);
   });
 
-  test.only("strings provided. function to throw error.", () => {
+  test.only("both inputs are NOT legal. function to throw error.", () => {
     expect(() => {
-      addVAT("50", "20");
+      addVAT("50", true);
     }).toThrow(Error);
   });
 
