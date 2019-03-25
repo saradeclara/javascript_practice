@@ -88,9 +88,8 @@ function reverseAllWords(words) {
 
 function countLinuxUsers(users) {
   if (users === undefined) throw new Error("users is required");
-  
+  if (users.length === 0) throw new Error("empty array. users is required.");
   let typeCounter = 0;
-
   users.forEach(function(item) {
     if(item.type === "Linux") {
       typeCounter++;

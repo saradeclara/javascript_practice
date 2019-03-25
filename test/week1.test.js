@@ -342,6 +342,20 @@ describe("countLinuxUsers", () => {
     ];
     expect(countLinuxUsers(users)).toBe(5);
   });
+
+  test.only("undefined input. function to throw error.", () => {
+    expect(() => {
+      countLinuxUsers();
+    }).toThrow(Error);
+  });
+
+  test.only("empty array. function to throw error.", () => {
+    expect(() => {
+      const users = [];
+      countLinuxUsers(users);
+    }).toThrow(Error);
+  });
+
 });
 
 describe("getMeanScore", () => {
