@@ -181,6 +181,31 @@ describe("getSalePrice", () => {
   test.only("reduces a price of 50 by 0%", () => {
     expect(getSalePrice(50, 0)).toBe(50);
   });
+
+  test.only("undefined input. function to throw error.", () => {
+    expect(() => {
+      getSalePrice();
+    }).toThrow(Error);
+  });
+
+  test.only("original price type is legal. reduction type is NOT legal. function to throw error.", () => {
+    expect(() => {
+      getSalePrice(30, "ten");
+    }).toThrow(Error);
+  });  
+
+  test.only("original price type is NOT legal. reduction type is legal. function to throw error.", () => {
+    expect(() => {
+      getSalePrice("thirty", 10);
+    }).toThrow(Error);
+  });   
+
+  test.only("both input types are NOT Legal. function to throw error.", () => {
+    expect(() => {
+      getSalePrice(true, "ten");
+    }).toThrow(Error);
+  }); 
+
 });
 
 describe("getMiddleCharacter", () => {
