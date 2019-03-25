@@ -383,6 +383,10 @@ describe("getMeanScore", () => {
     expect(getMeanScore([88, 86, 93])).toBe(89);
   });
 
+  test.only("returns the mean score from an array of one element", () => {
+    expect(getMeanScore([8])).toBe(8);
+  });
+
   test.only("returns the mean to 2 decimal places", () => {
     expect(getMeanScore([24, 44, 56, 11, 12, 17, 34])).toBe(28.29);
   });
