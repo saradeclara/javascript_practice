@@ -84,6 +84,22 @@ describe("generateInitials", () => {
 });
 
 describe("generateInitials", () => {
+  test.only("only first name provided. function to throw error.", () => {
+    expect(() => {
+      generateInitials("Sara");
+    }).toThrow(Error);
+  });
+});
+
+describe("generateInitials", () => {
+  test.only("only last name provided. function to throw error.", () => {
+    expect(() => {
+      generateInitials("De Clara");
+    }).toThrow(Error);
+  });
+});
+
+describe("generateInitials", () => {
   test.only("integer input. function to throw error.", () => {
     expect(() => {
       generateInitials(1,2);
@@ -99,22 +115,42 @@ describe("generateInitials", () => {
   });
 });
 
+//addVAT function
 describe("addVAT", () => {
-  test("adds a VAT of 20% to a price of 100", () => {
+  test.only("adds a VAT of 20% to a price of 100", () => {
     expect(addVAT(100, 20)).toBe(120);
   });
 
-  test("adds a VAT of 17.5% to a price of 40", () => {
+  test.only("adds a VAT of 17.5% to a price of 40", () => {
     expect(addVAT(40, 17.5)).toBe(47);
   });
 
-  test("adds a VAT of 17.5% to a price of 33.50", () => {
+  test.only("adds a VAT of 17.5% to a price of 33.50", () => {
     expect(addVAT(33.5, 17.5)).toBe(39.36);
   });
 
-  test("adds a VAT of 0% to a price of 25", () => {
+  test.only("adds a VAT of 0% to a price of 25", () => {
     expect(addVAT(25, 0)).toBe(25);
   });
+
+  test.only("only price provided. function to throw error.", () => {
+    expect(() => {
+      addVAT(25);
+    }).toThrow(Error);
+  });
+
+  test.only("only VAT provided. function to throw error.", () => {
+    expect(() => {
+      addVAT(17.5);
+    }).toThrow(Error);
+  });
+
+  test.only("strings provided. function to throw error.", () => {
+    expect(() => {
+      addVAT("50", "20");
+    }).toThrow(Error);
+  });
+
 });
 
 describe("getSalePrice", () => {
