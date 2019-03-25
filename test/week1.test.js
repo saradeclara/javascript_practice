@@ -435,4 +435,23 @@ describe("simpleFizzBuzz", () => {
   test.only("returns 'fizzbuzz' if the number is divisible by 3 and 5", () => {
     expect(simpleFizzBuzz(15)).toBe("fizzbuzz");
   });
+
+  test.only("undefined input. function to throw error.", () => {
+    expect(() => {
+      simpleFizzBuzz();
+    }).toThrow(Error);
+  });
+
+  test.only("string input. function to throw error.", () => {
+    expect(() => {
+      simpleFizzBuzz("fifteen");
+    }).toThrow(Error);
+  });
+
+  test.only("boolean input. function to throw error.", () => {
+    expect(() => {
+      simpleFizzBuzz(true);
+    }).toThrow(Error);
+  });
+
 });
