@@ -22,6 +22,67 @@ describe("getFillings", () => {
     };
     expect(getFillings(sandwich2)).toEqual(["smoked salmon", "dill"]);
   });
+
+  test.only("undefined input. function to throw error.", () => {
+    expect(() => {
+      getFillings();
+    }).toThrow(Error);
+  });
+
+  test.only("string input. function to throw error.", () => {
+    expect(() => {
+      getFillings("sourdough sandwich with lettuce and smoked salmon");
+    }).toThrow(Error);
+  });
+
+  test.only("boolean input. function to throw error.", () => {
+    expect(() => {
+      getFillings(true);
+    }).toThrow(Error);
+  });
+  
+  test.only("empty fillings array input. function to throw error.", () => {
+    expect(() => {
+      const sandwich3 = {
+        bread: 'granary',
+        fillings: [],
+        accompaniment: 'popcorn',
+      };
+      getFillings(sandwich3);
+    }).toThrow(Error);
+  });  
+
+  test.only("bread property not defined. function to throw error.", () => {
+    expect(() => {
+      const sandwich4 = {
+        fillings: ['tuna', 'cucumber', 'mayo'],
+        accompaniment: 'ready salted crisps',
+      };
+      getFillings(sandwich4);
+    }).toThrow(Error);
+  });
+
+  test.only("fillings property not defined. function to throw error.", () => {
+    expect(() => {
+      const sandwich5 = {
+        bread: 'wholemeal',
+        cheese: 'red leicester',
+        accompaniment: 'ready salted crisps',
+      };
+      getFillings(sandwich5);
+    }).toThrow(Error);
+  });
+  
+  test.only("accompaniment property not defined. function to throw error.", () => {
+    expect(() => {
+      const sandwich6 = {
+        bread: 'white',
+        fillings: ['ham, cheese'],
+        price: "£3",
+      };
+      getFillings(sandwich6);
+    }).toThrow(Error);
+  });  
 });
 
 describe("isFromManchester", () => {
