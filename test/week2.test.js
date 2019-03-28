@@ -7,7 +7,7 @@ const {
 } = require("../challenges/week2");
 
 describe("getFillings", () => {
-  test.only("returns the fillings of a sandwich", () => {
+  test("returns the fillings of a sandwich", () => {
     const sandwich = {
       bread: "Sourdough",
       fillings: ["brie", "relish", "lettuce"],
@@ -23,25 +23,25 @@ describe("getFillings", () => {
     expect(getFillings(sandwich2)).toEqual(["smoked salmon", "dill"]);
   });
 
-  test.only("undefined input. function to throw error.", () => {
+  test("undefined input. function to throw error.", () => {
     expect(() => {
       getFillings();
     }).toThrow(Error);
   });
 
-  test.only("string input. function to throw error.", () => {
+  test("string input. function to throw error.", () => {
     expect(() => {
       getFillings("sourdough sandwich with lettuce and smoked salmon");
     }).toThrow(Error);
   });
 
-  test.only("boolean input. function to throw error.", () => {
+  test("boolean input. function to throw error.", () => {
     expect(() => {
       getFillings(true);
     }).toThrow(Error);
   });
   
-  test.only("empty fillings array input. function to throw error.", () => {
+  test("empty fillings array input. function to throw error.", () => {
     expect(() => {
       const sandwich3 = {
         bread: 'granary',
@@ -52,7 +52,7 @@ describe("getFillings", () => {
     }).toThrow(Error);
   });  
 
-  test.only("bread property not defined. function to throw error.", () => {
+  test("bread property not defined. function to throw error.", () => {
     expect(() => {
       const sandwich4 = {
         fillings: ['tuna', 'cucumber', 'mayo'],
@@ -62,7 +62,7 @@ describe("getFillings", () => {
     }).toThrow(Error);
   });
 
-  test.only("fillings property not defined. function to throw error.", () => {
+  test("fillings property not defined. function to throw error.", () => {
     expect(() => {
       const sandwich5 = {
         bread: 'wholemeal',
@@ -73,7 +73,7 @@ describe("getFillings", () => {
     }).toThrow(Error);
   });
   
-  test.only("accompaniment property not defined. function to throw error.", () => {
+  test("accompaniment property not defined. function to throw error.", () => {
     expect(() => {
       const sandwich6 = {
         bread: 'white',
@@ -86,7 +86,7 @@ describe("getFillings", () => {
 });
 
 describe("isFromManchester", () => {
-  test("returns true if the person is from Manchester", () => {
+  test.only("returns true if the person is from Manchester", () => {
     const person = {
       name: "Mohammed",
       city: "Manchester",
@@ -95,13 +95,39 @@ describe("isFromManchester", () => {
     expect(isFromManchester(person)).toBe(true);
   });
 
-  test("returns false if the person is not Manchester", () => {
+  test.only("returns false if the person is not Manchester", () => {
     const person = {
       name: "Anisa",
       city: "Leeds",
       age: 39
     };
     expect(isFromManchester(person)).toBe(false);
+  });
+
+  test.only("undefined input. function to throw error.", () => {
+    expect(() => {
+      isFromManchester();
+    }).toThrow(Error);
+  });
+
+  test.only("undefined city. function to throw error.", () => {
+    expect(() => {
+      const person3 = {
+        name: 'Sara',
+        age: 30,
+      };
+      isFromManchester(person3);
+    }).toThrow(Error);
+  });
+
+  test.only("undefined name. function to throw error.", () => {
+    const person4 = {
+      city: 'New York',
+      age: 30,
+    };
+    expect(() => {
+      isFromManchester(person4);
+    }).toThrow(Error);
   });
 });
 

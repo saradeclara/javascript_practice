@@ -11,7 +11,9 @@ function getFillings(sandwich) {
 
 function isFromManchester(person) {
   if (person === undefined) throw new Error("person is required");
-  // Your code here!
+  if (person.city === undefined) throw new Error("city was not defined");
+  if (person.name === undefined) throw new Error("name was not defined");
+  return (person.city === "Manchester" ? true : false);
 }
 
 function getBusNumbers(people) {
