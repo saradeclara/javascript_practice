@@ -23,6 +23,7 @@ function getBusNumbers(people) {
 
 function countSheep(arr) {
   if (!arr) throw new Error("arr is required");
+  if (typeof arr !== "object") throw new Error("illegal input provided");
   // Your code here!
 }
 

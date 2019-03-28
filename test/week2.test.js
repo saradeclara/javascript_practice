@@ -133,7 +133,7 @@ describe("isFromManchester", () => {
 
 describe("getBusNumbers", () => {
   // A bus can hold 40 people. This function should return how many buses are required for the number of people
-  test.only("returns 1 if all the people fit in 1 bus", () => {
+  test("returns 1 if all the people fit in 1 bus", () => {
     expect(getBusNumbers(1)).toBe(1);
     expect(getBusNumbers(10)).toBe(1);
     expect(getBusNumbers(25)).toBe(1);
@@ -141,37 +141,37 @@ describe("getBusNumbers", () => {
     expect(getBusNumbers(40)).toBe(1);
   });
 
-  test.only("returns 2 if 2 buses are required", () => {
+  test("returns 2 if 2 buses are required", () => {
     expect(getBusNumbers(41)).toBe(2);
     expect(getBusNumbers(50)).toBe(2);
     expect(getBusNumbers(55)).toBe(2);
     expect(getBusNumbers(80)).toBe(2);
   });
 
-  test.only("returns 3 if 3 buses are required", () => {
+  test("returns 3 if 3 buses are required", () => {
     expect(getBusNumbers(81)).toBe(3);
     expect(getBusNumbers(85)).toBe(3);
     expect(getBusNumbers(100)).toBe(3);
     expect(getBusNumbers(120)).toBe(3);
   });
 
-  test.only("returns the correct number of buses for larger numbers of people", () => {
+  test("returns the correct number of buses for larger numbers of people", () => {
     expect(getBusNumbers(43728)).toBe(1094);
   });
 
-  test.only("undefined input. function to throw error.", () => {
+  test("undefined input. function to throw error.", () => {
     expect(() => {
       getBusNumbers();
     }).toThrow(Error);
   });
 
-  test.only("string input. function to throw error.", () => {
+  test("string input. function to throw error.", () => {
     expect(() => {
       getBusNumbers("thirty");
     }).toThrow(Error);
   });
 
-  test.only("boolean input. function to throw error.", () => {
+  test("boolean input. function to throw error.", () => {
     expect(() => {
       getBusNumbers(true);
     }).toThrow(Error);
@@ -179,22 +179,22 @@ describe("getBusNumbers", () => {
 });
 
 describe("countSheep", () => {
-  test("returns 0 if there are 0 sheep in the array", () => {
+  test.only("returns 0 if there are 0 sheep in the array", () => {
     const arr = ["dog", "badger", "dog", "dog", "chicken"];
     expect(countSheep(arr)).toBe(0);
   });
 
-  test("returns 1 if there is 1 sheep in the array", () => {
+  test.only("returns 1 if there is 1 sheep in the array", () => {
     const arr = ["dog", "sheep", "dog", "dog", "chicken"];
     expect(countSheep(arr)).toBe(1);
   });
 
-  test("returns 2 if there are 2 sheep in the array", () => {
+  test.only("returns 2 if there are 2 sheep in the array", () => {
     const arr = ["dog", "sheep", "dog", "sheep", "chicken"];
     expect(countSheep(arr)).toBe(2);
   });
 
-  test("returns 5 if there are 5 sheep in the array", () => {
+  test.only("returns 5 if there are 5 sheep in the array", () => {
     const arr = [
       "dog",
       "sheep",
@@ -207,6 +207,30 @@ describe("countSheep", () => {
       "sheep"
     ];
     expect(countSheep(arr)).toBe(5);
+  });
+
+  test.only("undefined input. function to throw error", () => {
+    expect(() => {
+      countSheep();
+    }).toThrow(Error);
+  });
+
+  test.only("string input. function to throw error", () => {
+    expect(() => {
+      countSheep("sheep");
+    }).toThrow(Error);
+  });
+
+  test.only("integer input. function to throw error", () => {
+    expect(() => {
+      countSheep(5);
+    }).toThrow(Error);
+  });
+
+  test.only("boolean input. function to throw error", () => {
+    expect(() => {
+      countSheep(true);
+    }).toThrow(Error);
   });
 });
 
