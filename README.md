@@ -121,7 +121,7 @@ And when the string is already capitalized:
 
 `capitalize("Hello everyone") --> "Hello everyone"`
 
-What is the string contains no characters?
+What if the string contains no characters?
 
 `capitalize("") --> ""`
 
