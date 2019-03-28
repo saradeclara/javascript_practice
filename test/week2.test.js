@@ -141,7 +141,7 @@ describe("getBusNumbers", () => {
     expect(getBusNumbers(40)).toBe(1);
   });
 
-  test("returns 2 if 2 buses are required", () => {
+  test.only("returns 2 if 2 buses are required", () => {
     expect(getBusNumbers(41)).toBe(2);
     expect(getBusNumbers(50)).toBe(2);
     expect(getBusNumbers(55)).toBe(2);
@@ -157,6 +157,24 @@ describe("getBusNumbers", () => {
 
   test.only("returns the correct number of buses for larger numbers of people", () => {
     expect(getBusNumbers(43728)).toBe(1094);
+  });
+
+  test.only("undefined input. function to throw error.", () => {
+    expect(() => {
+      getBusNumbers();
+    }).toThrow(Error);
+  });
+
+  test.only("string input. function to throw error.", () => {
+    expect(() => {
+      getBusNumbers("thirty");
+    }).toThrow(Error);
+  });
+
+  test.only("boolean input. function to throw error.", () => {
+    expect(() => {
+      getBusNumbers(true);
+    }).toThrow(Error);
   });
 });
 

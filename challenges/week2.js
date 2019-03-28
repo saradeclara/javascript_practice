@@ -17,7 +17,7 @@ function isFromManchester(person) {
 
 function getBusNumbers(people) {
   if (people === undefined) throw new Error("people is required");
-  // Your code here!
+  if (typeof people !== "number") throw new Error("illegal input provided");
 }
 
 function countSheep(arr) {
