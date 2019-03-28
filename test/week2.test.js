@@ -7,7 +7,7 @@ const {
 } = require("../challenges/week2");
 
 describe("getFillings", () => {
-  test("returns the fillings of a sandwich", () => {
+  test.only("returns the fillings of a sandwich", () => {
     const sandwich = {
       bread: "Sourdough",
       fillings: ["brie", "relish", "lettuce"],
