@@ -5,7 +5,6 @@ function getFillings(sandwich) {
   if (sandwich.bread === undefined) throw new Error("no bread provided for this sandwich.");
   if (sandwich.fillings === undefined) throw new Error("no fillings provided for this sandwich.");
   if (sandwich.accompaniment === undefined) throw new Error("no accompaniment provided for this sandwich.");
-    
   return sandwich.fillings;
 }
 
