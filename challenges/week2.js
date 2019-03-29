@@ -24,7 +24,13 @@ function getBusNumbers(people) {
 function countSheep(arr) {
   if (!arr) throw new Error("arr is required");
   if (typeof arr !== "object") throw new Error("illegal input provided");
-  // Your code here!
+  let counter = 0;
+  arr.forEach(function(item) {
+    if (item === "sheep") {
+      counter++;
+    }
+  });
+  return counter;
 }
 
 function hasMPostCode(person) {
