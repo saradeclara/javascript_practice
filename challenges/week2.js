@@ -25,7 +25,7 @@ function countSheep(arr) {
   if (!arr) throw new Error("arr is required");
   if (typeof arr !== "object") throw new Error("illegal input provided");
   let counter = 0;
-  arr.forEach(function(item) {
+  arr.forEach(function (item) {
     if (item === "sheep") {
       counter++;
     }

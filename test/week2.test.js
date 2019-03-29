@@ -40,7 +40,7 @@ describe("getFillings", () => {
       getFillings(true);
     }).toThrow(Error);
   });
-  
+
   test("empty fillings array input. function to throw error.", () => {
     expect(() => {
       const sandwich3 = {
@@ -50,7 +50,7 @@ describe("getFillings", () => {
       };
       getFillings(sandwich3);
     }).toThrow(Error);
-  });  
+  });
 
   test("bread property not defined. function to throw error.", () => {
     expect(() => {
@@ -72,7 +72,7 @@ describe("getFillings", () => {
       getFillings(sandwich5);
     }).toThrow(Error);
   });
-  
+
   test("accompaniment property not defined. function to throw error.", () => {
     expect(() => {
       const sandwich6 = {
@@ -82,7 +82,7 @@ describe("getFillings", () => {
       };
       getFillings(sandwich6);
     }).toThrow(Error);
-  });  
+  });
 });
 
 describe("isFromManchester", () => {
@@ -290,7 +290,7 @@ describe("hasMPostCode", () => {
     expect(() => {
       hasMPostCode(123);
     }).toThrow(Error);
-  });  
+  });
 
   test("boolean input. function to throw error.", () => {
     expect(() => {
