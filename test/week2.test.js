@@ -179,22 +179,22 @@ describe("getBusNumbers", () => {
 });
 
 describe("countSheep", () => {
-  test.only("returns 0 if there are 0 sheep in the array", () => {
+  test("returns 0 if there are 0 sheep in the array", () => {
     const arr = ["dog", "badger", "dog", "dog", "chicken"];
     expect(countSheep(arr)).toBe(0);
   });
 
-  test.only("returns 1 if there is 1 sheep in the array", () => {
+  test("returns 1 if there is 1 sheep in the array", () => {
     const arr = ["dog", "sheep", "dog", "dog", "chicken"];
     expect(countSheep(arr)).toBe(1);
   });
 
-  test.only("returns 2 if there are 2 sheep in the array", () => {
+  test("returns 2 if there are 2 sheep in the array", () => {
     const arr = ["dog", "sheep", "dog", "sheep", "chicken"];
     expect(countSheep(arr)).toBe(2);
   });
 
-  test.only("returns 5 if there are 5 sheep in the array", () => {
+  test("returns 5 if there are 5 sheep in the array", () => {
     const arr = [
       "dog",
       "sheep",
@@ -209,25 +209,25 @@ describe("countSheep", () => {
     expect(countSheep(arr)).toBe(5);
   });
 
-  test.only("undefined input. function to throw error", () => {
+  test("undefined input. function to throw error", () => {
     expect(() => {
       countSheep();
     }).toThrow(Error);
   });
 
-  test.only("string input. function to throw error", () => {
+  test("string input. function to throw error", () => {
     expect(() => {
       countSheep("sheep");
     }).toThrow(Error);
   });
 
-  test.only("integer input. function to throw error", () => {
+  test("integer input. function to throw error", () => {
     expect(() => {
       countSheep(5);
     }).toThrow(Error);
   });
 
-  test.only("boolean input. function to throw error", () => {
+  test("boolean input. function to throw error", () => {
     expect(() => {
       countSheep(true);
     }).toThrow(Error);
@@ -235,7 +235,7 @@ describe("countSheep", () => {
 });
 
 describe("hasMPostCode", () => {
-  test("returns true if the person has a postcode starting with M", () => {
+  test.only("returns true if the person has a postcode starting with M", () => {
     const person = {
       name: "Mohammed",
       age: 23,
@@ -248,7 +248,7 @@ describe("hasMPostCode", () => {
     expect(hasMPostCode(person)).toBe(true);
   });
 
-  test("returns false if the person does not have a postcode starting with M", () => {
+  test.only("returns false if the person does not have a postcode starting with M", () => {
     const person = {
       name: "Anisa",
       age: 39,
@@ -261,7 +261,7 @@ describe("hasMPostCode", () => {
     expect(hasMPostCode(person)).toBe(false);
   });
 
-  test("returns false if the postcode starts with M but is not for Manchester", () => {
+  test.only("returns false if the postcode starts with M but is not for Manchester", () => {
     const person = {
       name: "Jahin",
       age: 55,
@@ -273,4 +273,29 @@ describe("hasMPostCode", () => {
     };
     expect(hasMPostCode(person)).toBe(false);
   });
+
+  test.only("undefined input. function to throw error.", () => {
+    expect(() => {
+      hasMPostCode();
+    }).toThrow(Error);
+  });
+
+  test.only("string input. function to throw error.", () => {
+    expect(() => {
+      hasMPostCode("M156AH");
+    }).toThrow(Error);
+  });
+
+  test.only("integer input. function to throw error.", () => {
+    expect(() => {
+      hasMPostCode(123);
+    }).toThrow(Error);
+  });  
+
+  test.only("boolean input. function to throw error.", () => {
+    expect(() => {
+      hasMPostCode(true);
+    }).toThrow(Error);
+  });
+
 });
