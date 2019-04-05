@@ -8,19 +8,19 @@ const {
 
 describe("camelCaseWords", () => {
   test.only("camel cases elements in an array. all items are capitalized.", () => {
-    expect(camelCaseWords(['The', 'Quick', 'Brown', 'Fox']).toEqual('theQuickBrownFox'))
+    expect(camelCaseWords(['The', 'Quick', 'Brown', 'Fox'])).toBe('theQuickBrownFox')
   });
 
   test.only("camel cases elements in an array. all items are uppercase.", () => {
-    expect(camelCaseWords(['THE', 'QUICK', 'BROWN', 'FOX']).toEqual('theQuickBrownFox'))
+    expect(camelCaseWords(['THE', 'QUICK', 'BROWN', 'FOX'])).toBe('theQuickBrownFox')
   });
 
   test.only("camel cases elements in an array. all items are lowecase.", () => {
-    expect(camelCaseWords(['the', 'quick', 'brown', 'fox']).toEqual('theQuickBrownFox'))
+    expect(camelCaseWords(['the', 'quick', 'brown', 'fox'])).toBe('theQuickBrownFox')
   });
 
   test.only("camel cases elements in an array. items are lowercase, uppercase, capitalized.", () => {
-    expect(camelCaseWords(['THE', 'quick', 'Brown', 'FOX']).toEqual('theQuickBrownFox'))
+    expect(camelCaseWords(['THE', 'quick', 'Brown', 'FOX'])).toBe('theQuickBrownFox')
   });
 
   test.only("illegal input (integer). function to throw error.", () => {
@@ -40,7 +40,7 @@ describe("camelCaseWords", () => {
       camelCaseWords();
     }).toThrow(Error);
   });
-
+// 
   test.only("empty array. function to throw error.", () => {
     expect(() => {
       camelCaseWords([]);
