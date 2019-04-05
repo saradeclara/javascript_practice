@@ -97,7 +97,11 @@ describe("getSquares", () => {
 });
 
 describe("getTotalSubjects", () => {
-  test("returns 0 if no people have subjects", () => {
+// undefined object
+// empty object
+// values inside subjects array are not string
+
+  test.only("returns 0 if no people have subjects", () => {
     const people = [
       { name: "Billy", subjects: [] },
       { name: "Claude", subjects: [] },
@@ -106,7 +110,7 @@ describe("getTotalSubjects", () => {
     expect(getTotalSubjects(people)).toBe(0);
   });
 
-  test("returns 1 if 1 person has a subject", () => {
+  test.only("returns 1 if 1 person has a subject", () => {
     const people = [
       { name: "Billy", subjects: [] },
       { name: "Claude", subjects: ["chemistry"] },
@@ -115,7 +119,7 @@ describe("getTotalSubjects", () => {
     expect(getTotalSubjects(people)).toBe(1);
   });
 
-  test("returns the correct number of subjects studied in total for all people", () => {
+  test.only("returns the correct number of subjects studied in total for all people", () => {
     const people = [
       { name: "Billy", subjects: ["welsh", "spanish"] },
       { name: "Claude", subjects: ["chemistry", "biology", "music"] },
