@@ -7,6 +7,24 @@ const {
 } = require("../challenges/week3");
 
 describe("camelCaseWords", () => {
+  // array with every word capitalized
+  // array with every word uppercase
+  // array with every word lowercase
+  // array with mixed input
+  // illegal input (integer, boolean)
+
+  test.only("illegal input (integer). function to throw error.", () => {
+    expect(() => {
+      camelCaseWords(123);
+    }).toThrow(Error);
+    });
+
+    test.only("illegal input (boolean). function to throw error.", () => {
+      expect(() => {
+        camelCaseWords(true);
+      }).toThrow(Error);
+      });
+
   test.only("camel cases a single word (i.e. no capital letter at beginning)", () => {
     expect(camelCaseWords(["my"])).toBe("my");
   });
