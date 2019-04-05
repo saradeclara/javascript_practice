@@ -97,9 +97,29 @@ describe("getSquares", () => {
 });
 
 describe("getTotalSubjects", () => {
-// undefined object
-// empty object
+// undefined input
+test.only("undefined input. function to throw an error.", () => {
+  expect(() => {
+    getTotalSubjects();
+  }).toThrow(Error);
+})
+// empty array
+test.only("empty array. function to throw an error.", () => {
+  expect(() => {
+    getTotalSubjects([]);
+  }).toThrow(Error);
+})
 // values inside subjects array are not string
+test.only("subjects property (array) does not contain strings. function to throw an error.", () => {
+  expect(() => {
+    getTotalSubjects([
+      { name: "Billy", subjects: [1,2,3] },
+      { name: "Claude", subjects: [true, false] },
+      { name: "Aneeta", subjects: ['maths', 'science'] }
+    ])
+  }).toThrow(Error);
+})
+
 
   test.only("returns 0 if no people have subjects", () => {
     const people = [

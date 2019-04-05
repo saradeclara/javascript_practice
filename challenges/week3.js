@@ -34,6 +34,8 @@ function camelCaseWords(words) {
 
 function getTotalSubjects(people) {
   if (!people) throw new Error("people is required");
+  if (typeof people !== 'object') throw new Error("input is illegal. array is required.");
+  if (people.length === 0) throw new Error("array is empty. valid array is required.");
   // Your code here!
 }
 
