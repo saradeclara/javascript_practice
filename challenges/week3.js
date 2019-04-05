@@ -1,6 +1,22 @@
 function getSquares(nums) {
   if (!nums) throw new Error("nums is required");
-  // Your code here!
+  if (typeof nums !== 'object') throw new Error("nums is not an array")
+  else {
+    // check type of values of array. creates an array that contains all illegal items within the array.
+    // if illegalInputs IS NOT empty, that means that there is at least one illegal element within the array.
+    let illegalInputs = nums.filter(function (item) {
+      return typeof item !== 'number'
+    });
+    if (illegalInputs.length !== 0) throw new Error("at least one of element of the array is illegal");
+  }
+  if (nums.length === 0) {
+    return nums;
+  } else {
+    let newSquares = nums.map(function (item) {
+      return Math.pow(item, 2);
+    });
+    return newSquares;
+  }
 }
 
 function camelCaseWords(words) {

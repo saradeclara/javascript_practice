@@ -26,11 +26,23 @@ describe("camelCaseWords", () => {
 });
 
 describe("getSquares", () => {
-  test("returns an empty array if empty array passed", () => {
+test.only("illegal input (string). function to throw error.", () => {
+  expect(() => {
+    getSquares('twenty');
+  }).toThrow(Error);
+});
+
+  test.only("returns an empty array if empty array passed", () => {
     expect(getSquares([])).toEqual([]);
   });
 
-  test("returns an array of squares of the original numbers", () => {
+  test.only("throws an error if an array of strings passed", () => {
+    expect(() => {
+      getSquares(['twenty', 'fifty', 'three']);
+    }).toThrow(Error);
+  })
+
+  test.only("returns an array of squares of the original numbers", () => {
     expect(getSquares([2, 4, 6])).toEqual([4, 16, 36]);
     expect(getSquares([2, 4, 6, 1])).toEqual([4, 16, 36, 1]);
     expect(getSquares([2, 3, 6, 7, 12, 4])).toEqual([4, 9, 36, 49, 144, 16]);
