@@ -7,55 +7,55 @@ const {
 } = require("../challenges/week3");
 
 describe("camelCaseWords", () => {
-  test.only("camel cases elements in an array. all items are capitalized.", () => {
+  test("camel cases elements in an array. all items are capitalized.", () => {
     expect(camelCaseWords(['The', 'Quick', 'Brown', 'Fox'])).toBe('theQuickBrownFox')
   });
 
-  test.only("camel cases elements in an array. all items are uppercase.", () => {
+  test("camel cases elements in an array. all items are uppercase.", () => {
     expect(camelCaseWords(['THE', 'QUICK', 'BROWN', 'FOX'])).toBe('theQuickBrownFox')
   });
 
-  test.only("camel cases elements in an array. all items are lowecase.", () => {
+  test("camel cases elements in an array. all items are lowecase.", () => {
     expect(camelCaseWords(['the', 'quick', 'brown', 'fox'])).toBe('theQuickBrownFox')
   });
 
-  test.only("camel cases elements in an array. items are lowercase, uppercase, capitalized.", () => {
+  test("camel cases elements in an array. items are lowercase, uppercase, capitalized.", () => {
     expect(camelCaseWords(['THE', 'quick', 'Brown', 'FOX'])).toBe('theQuickBrownFox')
   });
 
-  test.only("illegal input (integer). function to throw error.", () => {
+  test("illegal input (integer). function to throw error.", () => {
     expect(() => {
       camelCaseWords(123);
     }).toThrow(Error);
   });
 
-  test.only("illegal input (boolean). function to throw error.", () => {
+  test("illegal input (boolean). function to throw error.", () => {
     expect(() => {
       camelCaseWords(true);
     }).toThrow(Error);
   });
 
-  test.only("undefined input. function to throw error.", () => {
+  test("undefined input. function to throw error.", () => {
     expect(() => {
       camelCaseWords();
     }).toThrow(Error);
   });
 // 
-  test.only("empty array. function to throw error.", () => {
+  test("empty array. function to throw error.", () => {
     expect(() => {
       camelCaseWords([]);
     }).toThrow(Error);
   });
 
-  test.only("camel cases a single word (i.e. no capital letter at beginning)", () => {
+  test("camel cases a single word (i.e. no capital letter at beginning)", () => {
     expect(camelCaseWords(["my"])).toBe("my");
   });
 
-  test.only("camel cases two words (i.e. second word is capitalized)", () => {
+  test("camel cases two words (i.e. second word is capitalized)", () => {
     expect(camelCaseWords(["my", "variable"])).toBe("myVariable");
   });
 
-  test.only("camel cases two+ words (i.e. all words after 1st are capitalized)", () => {
+  test("camel cases two+ words (i.e. all words after 1st are capitalized)", () => {
     expect(camelCaseWords(["my", "variable"])).toBe("myVariable");
     expect(camelCaseWords(["my", "variable", "name"])).toBe("myVariableName");
     expect(camelCaseWords(["is", "unique"])).toBe("isUnique");

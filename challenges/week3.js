@@ -22,17 +22,14 @@ function getSquares(nums) {
 function camelCaseWords(words) {
   if (!words) throw new Error("words is required");
   if (words.length === 0) throw new Error("array is empty. valid array required");
-  
-  let camelCaseArr = words.map(function(item, index) {
+  let camelCaseArr = words.map(function (item, index) {
     if (index === 0) {
       return item.toLowerCase();
     } else {
       return item[0].toUpperCase() + item.slice(1).toLowerCase();
     }
   });
-
   return camelCaseArr.join("");
-
 }
 
 function getTotalSubjects(people) {
