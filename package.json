@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/techreturners/javascript_practice#readme",
   "devDependencies": {
-    "eslint": "^5.15.1",
+    "eslint": "^5.15.3",
     "jest": "^24.5.0"
   }
 }
