@@ -7,11 +7,6 @@ const {
 } = require("../challenges/week3");
 
 describe("camelCaseWords", () => {
-  // array with every word capitalized
-  // array with every word uppercase
-  // array with every word lowercase
-  // array with mixed input
-
   test.only("camel cases elements in an array. all items are capitalized.", () => {
     expect(camelCaseWords(['The', 'Quick', 'Brown', 'Fox']).toEqual('theQuickBrownFox'))
   });
@@ -37,6 +32,18 @@ describe("camelCaseWords", () => {
   test.only("illegal input (boolean). function to throw error.", () => {
     expect(() => {
       camelCaseWords(true);
+    }).toThrow(Error);
+  });
+
+  test.only("undefined input. function to throw error.", () => {
+    expect(() => {
+      camelCaseWords();
+    }).toThrow(Error);
+  });
+
+  test.only("empty array. function to throw error.", () => {
+    expect(() => {
+      camelCaseWords([]);
     }).toThrow(Error);
   });
 

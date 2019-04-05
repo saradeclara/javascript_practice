@@ -21,6 +21,7 @@ function getSquares(nums) {
 
 function camelCaseWords(words) {
   if (!words) throw new Error("words is required");
+  if (words.length === 0) throw new Error("array is empty. valid array required");
   // Your code here!
 }
 
