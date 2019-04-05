@@ -11,19 +11,34 @@ describe("camelCaseWords", () => {
   // array with every word uppercase
   // array with every word lowercase
   // array with mixed input
-  // illegal input (integer, boolean)
+
+  test.only("camel cases elements in an array. all items are capitalized.", () => {
+    expect(camelCaseWords(['The', 'Quick', 'Brown', 'Fox']).toEqual('theQuickBrownFox'))
+  });
+
+  test.only("camel cases elements in an array. all items are uppercase.", () => {
+    expect(camelCaseWords(['THE', 'QUICK', 'BROWN', 'FOX']).toEqual('theQuickBrownFox'))
+  });
+
+  test.only("camel cases elements in an array. all items are lowecase.", () => {
+    expect(camelCaseWords(['the', 'quick', 'brown', 'fox']).toEqual('theQuickBrownFox'))
+  });
+
+  test.only("camel cases elements in an array. items are lowercase, uppercase, capitalized.", () => {
+    expect(camelCaseWords(['THE', 'quick', 'Brown', 'FOX']).toEqual('theQuickBrownFox'))
+  });
 
   test.only("illegal input (integer). function to throw error.", () => {
     expect(() => {
       camelCaseWords(123);
     }).toThrow(Error);
-    });
+  });
 
-    test.only("illegal input (boolean). function to throw error.", () => {
-      expect(() => {
-        camelCaseWords(true);
-      }).toThrow(Error);
-      });
+  test.only("illegal input (boolean). function to throw error.", () => {
+    expect(() => {
+      camelCaseWords(true);
+    }).toThrow(Error);
+  });
 
   test.only("camel cases a single word (i.e. no capital letter at beginning)", () => {
     expect(camelCaseWords(["my"])).toBe("my");
@@ -44,11 +59,11 @@ describe("camelCaseWords", () => {
 });
 
 describe("getSquares", () => {
-test("illegal input (string). function to throw error.", () => {
-  expect(() => {
-    getSquares('twenty');
-  }).toThrow(Error);
-});
+  test("illegal input (string). function to throw error.", () => {
+    expect(() => {
+      getSquares('twenty');
+    }).toThrow(Error);
+  });
 
   test("returns an empty array if empty array passed", () => {
     expect(getSquares([])).toEqual([]);
