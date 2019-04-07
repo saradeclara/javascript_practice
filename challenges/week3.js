@@ -36,6 +36,17 @@ function getTotalSubjects(people) {
   if (!people) throw new Error("people is required");
   if (typeof people !== 'object') throw new Error("input is illegal. array is required.");
   if (people.length === 0) throw new Error("array is empty. valid array is required.");
+  let illegalInputs = []; // array to contain all illegal items contained in 'subjects' property
+  // nested forEach loop to check that all 'subjects' are strings
+  people.forEach(function (people) {
+    let subjectArray = people.subjects;
+    subjectArray.forEach(function (subject) {
+      if (typeof subject !== 'string') {
+        illegalInputs.push(subject);
+      }
+    })
+  });
+  if (illegalInputs !== 0) throw new Error("at least one subjects record contains illegal item. all subjects should be strings.");
   // Your code here!
 }
 

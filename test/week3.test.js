@@ -110,7 +110,7 @@ test.only("empty array. function to throw an error.", () => {
   }).toThrow(Error);
 })
 // values inside subjects array are not string
-test.only("subjects property (array) does not contain strings. function to throw an error.", () => {
+test.only("at least one subjects property (array) does not contain strings. function to throw an error.", () => {
   expect(() => {
     getTotalSubjects([
       { name: "Billy", subjects: [1,2,3] },
