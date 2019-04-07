@@ -62,8 +62,14 @@ function checkIngredients(menu, ingredient) {
   if (!menu) throw new Error("menu is required");
   if (!ingredient) throw new Error("ingredient is required");
   if (typeof menu.name === undefined || typeof menu.ingredients === undefined) throw new Error("Property missing. All records need name property and ingredients property.");
-  
-  // Your code here!
+
+  let ingredientArray = [];
+      menu.forEach(function(recipe) {
+        recipe.ingredients.forEach(function(item) {
+          ingredientArray.push(item);
+        })
+      });
+      return ingredientArray.includes(ingredient);
 }
 
 function duplicateNumbers(arr1, arr2) {
