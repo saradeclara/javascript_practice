@@ -99,7 +99,16 @@ function duplicateNumbers(arr1, arr2) {
   arr2.forEach(function(item) {
     if (typeof item !== 'number') throw new Error ("illegal parameter provided (arr2). only integers allowed.");
   });
-  // Your code here!
+  let duplicateArray = [];
+  arr1.forEach(function(item) {
+    if (arr2.indexOf(item) !== -1) 
+    duplicateArray.push(item);
+  });
+  let newDuplicateArray = duplicateArray.filter(function(item, index, array) {
+    return (array.indexOf(item) >= index);
+  });
+  let sortedDuplicateArray = newDuplicateArray.sort(function(a,b) {return a-b});
+  return sortedDuplicateArray;
 }
 
 module.exports = {
