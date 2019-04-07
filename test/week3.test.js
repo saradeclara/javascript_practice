@@ -329,6 +329,21 @@ describe("checkIngredients", () => {
 });
 
 describe("duplicateNumbers", () => {
+
+  test.only("arr1 missing. function to throw an error.", () => {
+    expect(() => {
+      let arr2 = [2, 34, 65];
+      duplicateNumbers(arr2);
+    }).toThrow(Error);
+  });
+
+  test.only("arr2 missing. function to throw an error.", () => {
+    expect(() => {
+      let arr1 = [2, 34, 65];
+      duplicateNumbers(arr1);
+    }).toThrow(Error);
+  });
+
   test.only("returns an array of numbers which appear in both arr1 and arr2", () => {
     let arr1 = [1, 55, 4, 3, 7, 8];
     let arr2 = [55, 23, 65, 0];
