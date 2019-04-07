@@ -152,14 +152,14 @@ test("at least one subjects property (array) does not contain strings. function 
 describe("checkIngredients", () => {
  
   // undefined input
-  test.only("undefined input. function to throw error.", () => {
+  test("undefined input. function to throw error.", () => {
     expect(() => {
       checkIngredients();
     }).toThrow(Error);
   })
  
   // menu.name is empty
-  test.only("name property is empty. function to throw error.", () => {
+  test("name property is empty. function to throw error.", () => {
     const menu = [
       {
         name: '',
@@ -172,7 +172,7 @@ describe("checkIngredients", () => {
   })
 
   // menu.ingredients is empty
-  test.only("ingredients property is empty. function to throw error.", () => {
+  test("ingredients property is empty. function to throw error.", () => {
     const menu = [
       {
         name: 'Victoria Sponge Cake',
@@ -185,7 +185,7 @@ describe("checkIngredients", () => {
   })
 
    // every menu item should have name and ingredients
-   test.only("ingredients property missing. every menu item should have name and ingredients properties", () => {
+   test("ingredients property missing. every menu item should have name and ingredients properties", () => {
     const menu = [
       {
         name: 'Victoria Sponge Cake',
@@ -197,7 +197,7 @@ describe("checkIngredients", () => {
     }).toThrow(Error);
   })
 
-  test.only("name property missing. every menu item should have name and ingredients properties", () => {
+  test("name property missing. every menu item should have name and ingredients properties", () => {
     const menu = [
       {
         ingredients: ['dark chocolate', 'milk', 'caster sugar'],
@@ -210,7 +210,7 @@ describe("checkIngredients", () => {
   })
 
   // menu.name can only be a string
-  test.only("menu.name can only be a string", () => {
+  test("menu.name can only be a string", () => {
     const menu = [
       {
         name: true,
@@ -223,7 +223,7 @@ describe("checkIngredients", () => {
   });
 
   // menu.ingredients can only be an array
-  test.only("menu.ingredients can only be an array", () => {
+  test("menu.ingredients can only be an array", () => {
     const menu = [
       {
         name: 'tofu fritters',
@@ -236,7 +236,7 @@ describe("checkIngredients", () => {
   });
 
   // menu.ingredients can only contain strings
-  test.only("menu.ingredients can only be an array of strings.", () => {
+  test("menu.ingredients can only be an array of strings.", () => {
     const menu = [
       {
         name: 'tofu fritters',
@@ -249,7 +249,7 @@ describe("checkIngredients", () => {
   });
 
   // menu (parameter) can only be an object
-  test.only("menu (parameter) can only be an object.", () => {
+  test("menu (parameter) can only be an object.", () => {
     const menu = 'chocolate cake';
     expect(() => {
       checkIngredients(menu, 'dark chocolate');
@@ -257,7 +257,7 @@ describe("checkIngredients", () => {
   })
 
   // ingredient (parameter) can only be a string
-   test.only("ingredient (parameter) can only be a string.", () => {
+   test("ingredient (parameter) can only be a string.", () => {
     const menu = [
       {
         name: "tofu fritters",
@@ -269,7 +269,7 @@ describe("checkIngredients", () => {
     }).toThrow(Error);
   })
 
-  test.only("returns false if no menu items include the specified ingredient", () => {
+  test("returns false if no menu items include the specified ingredient", () => {
     const menu = [
       {
         name: "tofu fritters",
@@ -298,7 +298,7 @@ describe("checkIngredients", () => {
     expect(checkIngredients(menu, "milk")).toBe(false);
   });
 
-  test.only("returns true if a menu item includes the specified ingredient", () => {
+  test("returns true if a menu item includes the specified ingredient", () => {
     const menu = [
       {
         name: "tofu fritters",
@@ -329,7 +329,7 @@ describe("checkIngredients", () => {
 });
 
 describe("duplicateNumbers", () => {
-  test("returns an array of numbers which appear in both arr1 and arr2", () => {
+  test.only("returns an array of numbers which appear in both arr1 and arr2", () => {
     let arr1 = [1, 55, 4, 3, 7, 8];
     let arr2 = [55, 23, 65, 0];
     expect(duplicateNumbers(arr1, arr2)).toEqual([55]);
@@ -339,7 +339,7 @@ describe("duplicateNumbers", () => {
     expect(duplicateNumbers(arr1, arr2)).toEqual([1]);
   });
 
-  test("returns the duplicate numbers in ascending order", () => {
+  test.only("returns the duplicate numbers in ascending order", () => {
     let arr1 = [1, 55, 4, 3, 7, 8];
     let arr2 = [55, 23, 65, 0, 1];
     expect(duplicateNumbers(arr1, arr2)).toEqual([1, 55]);
@@ -349,7 +349,7 @@ describe("duplicateNumbers", () => {
     expect(duplicateNumbers(arr1, arr2)).toEqual([1, 2, 3, 7]);
   });
 
-  test("returns each number only once, even if it appears in one array multiple times", () => {
+  test.only("returns each number only once, even if it appears in one array multiple times", () => {
     let arr1 = [1, 2, 2, 2, 3, 4, 5];
     let arr2 = [1, 2, 6, 7];
     expect(duplicateNumbers(arr1, arr2)).toEqual([1, 2]);
