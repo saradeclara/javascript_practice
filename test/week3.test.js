@@ -40,7 +40,7 @@ describe("camelCaseWords", () => {
       camelCaseWords();
     }).toThrow(Error);
   });
-// 
+  // 
   test("empty array. function to throw error.", () => {
     expect(() => {
       camelCaseWords([]);
@@ -97,28 +97,28 @@ describe("getSquares", () => {
 });
 
 describe("getTotalSubjects", () => {
-// undefined input
-test("undefined input. function to throw an error.", () => {
-  expect(() => {
-    getTotalSubjects();
-  }).toThrow(Error);
-})
-// empty array
-test("empty array. function to throw an error.", () => {
-  expect(() => {
-    getTotalSubjects([]);
-  }).toThrow(Error);
-})
-// values inside subjects array are not string
-test("at least one subjects property (array) does not contain strings. function to throw an error.", () => {
-  expect(() => {
-    getTotalSubjects([
-      { name: "Billy", subjects: [1,2,3] },
-      { name: "Claude", subjects: [true, false] },
-      { name: "Aneeta", subjects: ['maths', 'science'] }
-    ])
-  }).toThrow(Error);
-})
+  // undefined input
+  test("undefined input. function to throw an error.", () => {
+    expect(() => {
+      getTotalSubjects();
+    }).toThrow(Error);
+  })
+  // empty array
+  test("empty array. function to throw an error.", () => {
+    expect(() => {
+      getTotalSubjects([]);
+    }).toThrow(Error);
+  })
+  // values inside subjects array are not string
+  test("at least one subjects property (array) does not contain strings. function to throw an error.", () => {
+    expect(() => {
+      getTotalSubjects([
+        { name: "Billy", subjects: [1, 2, 3] },
+        { name: "Claude", subjects: [true, false] },
+        { name: "Aneeta", subjects: ['maths', 'science'] }
+      ])
+    }).toThrow(Error);
+  })
 
 
   test("returns 0 if no people have subjects", () => {
@@ -150,14 +150,14 @@ test("at least one subjects property (array) does not contain strings. function 
 });
 
 describe("checkIngredients", () => {
- 
+
   // undefined input
   test("undefined input. function to throw error.", () => {
     expect(() => {
       checkIngredients();
     }).toThrow(Error);
   })
- 
+
   // menu.name is empty
   test("name property is empty. function to throw error.", () => {
     const menu = [
@@ -184,8 +184,8 @@ describe("checkIngredients", () => {
     }).toThrow(Error);
   })
 
-   // every menu item should have name and ingredients
-   test("ingredients property missing. every menu item should have name and ingredients properties", () => {
+  // every menu item should have name and ingredients
+  test("ingredients property missing. every menu item should have name and ingredients properties", () => {
     const menu = [
       {
         name: 'Victoria Sponge Cake',
@@ -240,7 +240,7 @@ describe("checkIngredients", () => {
     const menu = [
       {
         name: 'tofu fritters',
-        ingredients: [1,2,3,4,5,6]
+        ingredients: [1, 2, 3, 4, 5, 6]
       }
     ]
     expect(() => {
@@ -257,7 +257,7 @@ describe("checkIngredients", () => {
   })
 
   // ingredient (parameter) can only be a string
-   test("ingredient (parameter) can only be a string.", () => {
+  test("ingredient (parameter) can only be a string.", () => {
     const menu = [
       {
         name: "tofu fritters",
@@ -330,20 +330,20 @@ describe("checkIngredients", () => {
 
 describe("duplicateNumbers", () => {
 
-  test.only("undefined input. function to throw an error.", () => {
+  test("undefined input. function to throw an error.", () => {
     expect(() => {
       duplicateNumbers();
     }).toThrow(Error);
   })
 
-  test.only("arr1 missing. function to throw an error.", () => {
+  test("arr1 missing. function to throw an error.", () => {
     expect(() => {
       let arr2 = [2, 34, 65];
       duplicateNumbers(arr2);
     }).toThrow(Error);
   });
 
-  test.only("arr2 missing. function to throw an error.", () => {
+  test("arr2 missing. function to throw an error.", () => {
     expect(() => {
       let arr1 = [2, 34, 65];
       duplicateNumbers(arr1);
@@ -351,16 +351,16 @@ describe("duplicateNumbers", () => {
   });
 
   // both inputs are arrays
-  test.only("arr1 and arr2 need to be arrays.", () => {
+  test("arr1 and arr2 need to be arrays.", () => {
     let arr1 = 4;
     let arr2 = 3;
     expect(() => {
-      duplicateNumbers(arr1,arr2);
+      duplicateNumbers(arr1, arr2);
     }).toThrow(Error);
   });
 
   // both inputs are arrays of integers
-  test.only("arr1 and arr2 need to be arrays of integers.", () => {
+  test("arr1 and arr2 need to be arrays of integers.", () => {
     let arr1 = ['one', 'two'];
     let arr2 = [3, 4];
     expect(() => {
@@ -368,7 +368,7 @@ describe("duplicateNumbers", () => {
     }).toThrow(Error);
   });
 
-  test.only("arr1 and arr2 need to be arrays of integers.", () => {
+  test("arr1 and arr2 need to be arrays of integers.", () => {
     let arr2 = ['one', 'two'];
     let arr1 = [3, 4];
     expect(() => {
@@ -376,7 +376,7 @@ describe("duplicateNumbers", () => {
     }).toThrow(Error);
   });
 
-  test.only("returns an array of numbers which appear in both arr1 and arr2", () => {
+  test("returns an array of numbers which appear in both arr1 and arr2", () => {
     let arr1 = [1, 55, 4, 3, 7, 8];
     let arr2 = [55, 23, 65, 0];
     expect(duplicateNumbers(arr1, arr2)).toEqual([55]);
@@ -386,7 +386,7 @@ describe("duplicateNumbers", () => {
     expect(duplicateNumbers(arr1, arr2)).toEqual([1]);
   });
 
-  test.only("returns the duplicate numbers in ascending order", () => {
+  test("returns the duplicate numbers in ascending order", () => {
     let arr1 = [1, 55, 4, 3, 7, 8];
     let arr2 = [55, 23, 65, 0, 1];
     expect(duplicateNumbers(arr1, arr2)).toEqual([1, 55]);
@@ -396,7 +396,7 @@ describe("duplicateNumbers", () => {
     expect(duplicateNumbers(arr1, arr2)).toEqual([1, 2, 3, 7]);
   });
 
-  test.only("returns each number only once, even if it appears in one array multiple times", () => {
+  test("returns each number only once, even if it appears in one array multiple times", () => {
     let arr1 = [1, 2, 2, 2, 3, 4, 5];
     let arr2 = [1, 2, 6, 7];
     expect(duplicateNumbers(arr1, arr2)).toEqual([1, 2]);

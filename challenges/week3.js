@@ -66,15 +66,15 @@ function checkIngredients(menu, ingredient) {
       throw new Error("at least one property is empty. every property should contain information.")
     }
   });
-  menu.forEach(function(recipe) {
+  menu.forEach(function (recipe) {
     if (typeof recipe.name !== 'string' || typeof recipe.ingredients !== 'object') {
       throw new Error("illegal type provided. name can only be a string and ingredients can only be an object.")
     }
   });
-  menu.forEach(function(recipe) {
-    recipe.ingredients.forEach(function(item) {
+  menu.forEach(function (recipe) {
+    recipe.ingredients.forEach(function (item) {
       if (typeof item !== 'string') {
-        throw new Error ("illegal type provided. ingredients can only be an array of strings.");
+        throw new Error("illegal type provided. ingredients can only be an array of strings.");
       }
     })
   });
@@ -93,21 +93,21 @@ function duplicateNumbers(arr1, arr2) {
   if (!arr1) throw new Error("arr1 is required");
   if (!arr2) throw new Error("arr2 is required");
   if (typeof arr1 !== 'object' && typeof arr2 !== 'object') throw new Error("illegal parameters provided. arr1 and arr2 need to be arrays.");
-  arr1.forEach(function(item) {
-    if (typeof item !== 'number') throw new Error ("illegal parameter provided (arr1). only integers allowed.");
+  arr1.forEach(function (item) {
+    if (typeof item !== 'number') throw new Error("illegal parameter provided (arr1). only integers allowed.");
   });
-  arr2.forEach(function(item) {
-    if (typeof item !== 'number') throw new Error ("illegal parameter provided (arr2). only integers allowed.");
+  arr2.forEach(function (item) {
+    if (typeof item !== 'number') throw new Error("illegal parameter provided (arr2). only integers allowed.");
   });
   let duplicateArray = [];
-  arr1.forEach(function(item) {
-    if (arr2.indexOf(item) !== -1) 
-    duplicateArray.push(item);
+  arr1.forEach(function (item) {
+    if (arr2.indexOf(item) !== -1)
+      duplicateArray.push(item);
   });
-  let newDuplicateArray = duplicateArray.filter(function(item, index, array) {
+  let newDuplicateArray = duplicateArray.filter(function (item, index, array) {
     return (array.indexOf(item) >= index);
   });
-  let sortedDuplicateArray = newDuplicateArray.sort(function(a,b) {return a-b});
+  let sortedDuplicateArray = newDuplicateArray.sort(function (a, b) { return a - b });
   return sortedDuplicateArray;
 }
 
