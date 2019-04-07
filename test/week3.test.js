@@ -158,8 +158,8 @@ describe("checkIngredients", () => {
     }).toThrow(Error);
   })
  
-  // menu is not defined
-  test.only("undefined menu. function to throw error.", () => {
+  // menu.name is empty
+  test.only("name property is empty. function to throw error.", () => {
     const menu = [
       {
         name: '',
@@ -167,12 +167,12 @@ describe("checkIngredients", () => {
       }
     ]
     expect(() => {
-      checkIngredients(menu);
+      checkIngredients(menu, 'milk');
     }).toThrow(Error);
   })
 
-  // ingredients is not defined
-  test.only("undefined ingredients. function to throw error.", () => {
+  // menu.ingredients is empty
+  test.only("ingredients property is empty. function to throw error.", () => {
     const menu = [
       {
         name: 'Victoria Sponge Cake',
@@ -180,7 +180,7 @@ describe("checkIngredients", () => {
       }
     ]
     expect(() => {
-      checkIngredients(menu);
+      checkIngredients(menu, 'eggs');
     }).toThrow(Error);
   })
 
@@ -193,7 +193,7 @@ describe("checkIngredients", () => {
       }
     ]
     expect(() => {
-      checkIngredients(menu);
+      checkIngredients(menu, 'dark chocolate');
     }).toThrow(Error);
   })
 
@@ -212,6 +212,12 @@ describe("checkIngredients", () => {
   // menu.name can only be a string
   // menu.ingredients can only be an array
   // menu.ingredients can only contain strings
+  // ingredient (parameter) can only be a string
+  test.only("ingredient (parameter) can only be a string.", () => {
+    expect(() => {
+      checkIngredients()
+    })
+  })
 
   test.only("returns false if no menu items include the specified ingredient", () => {
     const menu = [

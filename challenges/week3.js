@@ -61,15 +61,20 @@ function getTotalSubjects(people) {
 function checkIngredients(menu, ingredient) {
   if (!menu) throw new Error("menu is required");
   if (!ingredient) throw new Error("ingredient is required");
-  if (typeof menu.name === undefined || typeof menu.ingredients === undefined) throw new Error("Property missing. All records need name property and ingredients property.");
+  menu.forEach(function (recipe) {
+    if (recipe.name === '' || recipe.ingredients === '') {
+      throw new Error("at least one property is empty. every property should contain information.")
+    }
+  });
+  if (typeof menu !== 'object' || typeof ingredient !== 'string') throw new Error("menu needs to be array. ingredient needs to be a string");
 
   let ingredientArray = [];
-      menu.forEach(function(recipe) {
-        recipe.ingredients.forEach(function(item) {
-          ingredientArray.push(item);
-        })
-      });
-      return ingredientArray.includes(ingredient);
+  menu.forEach(function (recipe) {
+    recipe.ingredients.forEach(function (item) {
+      ingredientArray.push(item);
+    })
+  });
+  return ingredientArray.includes(ingredient);
 }
 
 function duplicateNumbers(arr1, arr2) {
