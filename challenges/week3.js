@@ -71,6 +71,13 @@ function checkIngredients(menu, ingredient) {
       throw new Error("illegal type provided. name can only be a string and ingredients can only be an object.")
     }
   });
+  menu.forEach(function(recipe) {
+    recipe.ingredients.forEach(function(item) {
+      if (typeof item !== 'string') {
+        throw new Error ("illegal type provided. ingredients can only be an array of strings.");
+      }
+    })
+  });
   if (typeof menu !== 'object' || typeof ingredient !== 'string') throw new Error("menu needs to be array. ingredient needs to be a string");
 
   let ingredientArray = [];
