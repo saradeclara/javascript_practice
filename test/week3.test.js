@@ -159,7 +159,6 @@ describe("checkIngredients", () => {
   })
  
   // menu is not defined
-
   test.only("undefined menu. function to throw error.", () => {
     const menu = [
       {
@@ -171,9 +170,22 @@ describe("checkIngredients", () => {
       checkIngredients(menu);
     }).toThrow(Error);
   })
+
   // ingredients is not defined
+  test.only("undefined ingredients. function to throw error.", () => {
+    const menu = [
+      {
+        name: 'Victoria Sponge Cake',
+        ingredients: ''
+      }
+    ]
+    expect(() => {
+      checkIngredients(menu);
+    }).toThrow(Error);
+  })
    // every menu item should have name and ingredients
   // menu.name can only be a string
+  // menu.ingredients can only be an array
   // menu.ingredients can only contain strings
 
   test.only("returns false if no menu items include the specified ingredient", () => {
