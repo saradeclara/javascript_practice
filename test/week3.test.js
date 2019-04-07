@@ -98,19 +98,19 @@ describe("getSquares", () => {
 
 describe("getTotalSubjects", () => {
 // undefined input
-test.only("undefined input. function to throw an error.", () => {
+test("undefined input. function to throw an error.", () => {
   expect(() => {
     getTotalSubjects();
   }).toThrow(Error);
 })
 // empty array
-test.only("empty array. function to throw an error.", () => {
+test("empty array. function to throw an error.", () => {
   expect(() => {
     getTotalSubjects([]);
   }).toThrow(Error);
 })
 // values inside subjects array are not string
-test.only("at least one subjects property (array) does not contain strings. function to throw an error.", () => {
+test("at least one subjects property (array) does not contain strings. function to throw an error.", () => {
   expect(() => {
     getTotalSubjects([
       { name: "Billy", subjects: [1,2,3] },
@@ -121,7 +121,7 @@ test.only("at least one subjects property (array) does not contain strings. func
 })
 
 
-  test.only("returns 0 if no people have subjects", () => {
+  test("returns 0 if no people have subjects", () => {
     const people = [
       { name: "Billy", subjects: [] },
       { name: "Claude", subjects: [] },
@@ -130,7 +130,7 @@ test.only("at least one subjects property (array) does not contain strings. func
     expect(getTotalSubjects(people)).toBe(0);
   });
 
-  test.only("returns 1 if 1 person has a subject", () => {
+  test("returns 1 if 1 person has a subject", () => {
     const people = [
       { name: "Billy", subjects: [] },
       { name: "Claude", subjects: ["chemistry"] },
@@ -139,7 +139,7 @@ test.only("at least one subjects property (array) does not contain strings. func
     expect(getTotalSubjects(people)).toBe(1);
   });
 
-  test.only("returns the correct number of subjects studied in total for all people", () => {
+  test("returns the correct number of subjects studied in total for all people", () => {
     const people = [
       { name: "Billy", subjects: ["welsh", "spanish"] },
       { name: "Claude", subjects: ["chemistry", "biology", "music"] },
@@ -150,7 +150,7 @@ test.only("at least one subjects property (array) does not contain strings. func
 });
 
 describe("checkIngredients", () => {
-  test("returns false if no menu items include the specified ingredient", () => {
+  test.only("returns false if no menu items include the specified ingredient", () => {
     const menu = [
       {
         name: "tofu fritters",
@@ -179,7 +179,7 @@ describe("checkIngredients", () => {
     expect(checkIngredients(menu, "milk")).toBe(false);
   });
 
-  test("returns true if a menu item includes the specified ingredient", () => {
+  test.only("returns true if a menu item includes the specified ingredient", () => {
     const menu = [
       {
         name: "tofu fritters",
