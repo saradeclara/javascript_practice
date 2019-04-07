@@ -66,6 +66,11 @@ function checkIngredients(menu, ingredient) {
       throw new Error("at least one property is empty. every property should contain information.")
     }
   });
+  menu.forEach(function(recipe) {
+    if (typeof recipe.name !== 'string' || typeof recipe.ingredients !== 'object') {
+      throw new Error("illegal type provided. name can only be a string and ingredients can only be an object.")
+    }
+  });
   if (typeof menu !== 'object' || typeof ingredient !== 'string') throw new Error("menu needs to be array. ingredient needs to be a string");
 
   let ingredientArray = [];

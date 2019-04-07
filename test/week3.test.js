@@ -210,7 +210,31 @@ describe("checkIngredients", () => {
   })
 
   // menu.name can only be a string
+  test.only("menu.name can only be a string", () => {
+    const menu = [
+      {
+        name: true,
+        ingredients: ["tofu", "egg yolk", "breadbrumbs", "paprika"]
+      }
+    ]
+    expect(() => {
+      checkIngredients(menu, "egg yolk");
+    }).toThrow(Error);
+  });
+
   // menu.ingredients can only be an array
+  test.only("menu.ingredients can only be an array", () => {
+    const menu = [
+      {
+        name: 'tofu fritters',
+        ingredients: 'tofu'
+      }
+    ]
+    expect(() => {
+      checkIngredients(menu, "tofu");
+    }).toThrow(Error);
+  });
+  
   // menu.ingredients can only contain strings
 
   // menu (parameter) can only be an object
