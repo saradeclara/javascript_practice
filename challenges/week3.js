@@ -37,17 +37,25 @@ function getTotalSubjects(people) {
   if (typeof people !== 'object') throw new Error("input is illegal. array is required.");
   if (people.length === 0) throw new Error("array is empty. valid array is required.");
   let illegalInputs = []; // array to contain all illegal items contained in 'subjects' property
-  // nested forEach loop to check that all 'subjects' are strings
+  // // nested forEach loop to check that all 'subjects' are strings
   people.forEach(function (people) {
     let subjectArray = people.subjects;
-    subjectArray.forEach(function (subject) {
-      if (typeof subject !== 'string') {
-        illegalInputs.push(subject);
+    subjectArray.forEach(function (singleSubject) {
+      if (typeof singleSubject !== 'string') {
+        illegalInputs.push(singleSubject);
       }
     })
   });
-  if (illegalInputs !== 0) throw new Error("at least one subjects record contains illegal item. all subjects should be strings.");
-  // Your code here!
+  if (illegalInputs.length !== 0) throw new Error("at least one subjects record contains illegal item. all subjects should be strings.");
+
+  let subjectsArray = [];
+  people.forEach(function (student) {
+    student.subjects.forEach(function (subject) {
+      subjectsArray.push(subject);
+    })
+  });
+  let totalSubjects = subjectsArray.length;
+  return totalSubjects;
 }
 
 function checkIngredients(menu, ingredient) {
