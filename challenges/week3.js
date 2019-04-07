@@ -61,6 +61,8 @@ function getTotalSubjects(people) {
 function checkIngredients(menu, ingredient) {
   if (!menu) throw new Error("menu is required");
   if (!ingredient) throw new Error("ingredient is required");
+  if (typeof menu.name === undefined || typeof menu.ingredients === undefined) throw new Error("Property missing. All records need name property and ingredients property.");
+  
   // Your code here!
 }
 

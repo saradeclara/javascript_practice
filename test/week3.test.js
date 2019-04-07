@@ -183,7 +183,32 @@ describe("checkIngredients", () => {
       checkIngredients(menu);
     }).toThrow(Error);
   })
+
    // every menu item should have name and ingredients
+   test.only("ingredients property missing. every menu item should have name and ingredients properties", () => {
+    const menu = [
+      {
+        name: 'Victoria Sponge Cake',
+        dish: 'Dessert'
+      }
+    ]
+    expect(() => {
+      checkIngredients(menu);
+    }).toThrow(Error);
+  })
+
+  test.only("name property missing. every menu item should have name and ingredients properties", () => {
+    const menu = [
+      {
+        ingredients: ['dark chocolate', 'milk', 'caster sugar'],
+        dish: 'Dessert'
+      }
+    ]
+    expect(() => {
+      checkIngredients(menu);
+    }).toThrow(Error);
+  })
+
   // menu.name can only be a string
   // menu.ingredients can only be an array
   // menu.ingredients can only contain strings
