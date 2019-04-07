@@ -358,8 +358,23 @@ describe("duplicateNumbers", () => {
       duplicateNumbers(arr1,arr2);
     }).toThrow(Error);
   });
-  
+
   // both inputs are arrays of integers
+  test.only("arr1 and arr2 need to be arrays of integers.", () => {
+    let arr1 = ['one', 'two'];
+    let arr2 = [3, 4];
+    expect(() => {
+      duplicateNumbers(arr1, arr2);
+    }).toThrow(Error);
+  });
+
+  test.only("arr1 and arr2 need to be arrays of integers.", () => {
+    let arr2 = ['one', 'two'];
+    let arr1 = [3, 4];
+    expect(() => {
+      duplicateNumbers(arr1, arr2);
+    }).toThrow(Error);
+  });
 
   test.only("returns an array of numbers which appear in both arr1 and arr2", () => {
     let arr1 = [1, 55, 4, 3, 7, 8];

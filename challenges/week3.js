@@ -92,7 +92,13 @@ function checkIngredients(menu, ingredient) {
 function duplicateNumbers(arr1, arr2) {
   if (!arr1) throw new Error("arr1 is required");
   if (!arr2) throw new Error("arr2 is required");
-  if (typeof arr1 !== 'object' && typeof arr2 !== 'object') throw new Error("illegal parameters provided. arr1 and arr2 need to be arrays.")
+  if (typeof arr1 !== 'object' && typeof arr2 !== 'object') throw new Error("illegal parameters provided. arr1 and arr2 need to be arrays.");
+  arr1.forEach(function(item) {
+    if (typeof item !== 'number') throw new Error ("illegal parameter provided (arr1). only integers allowed.");
+  });
+  arr2.forEach(function(item) {
+    if (typeof item !== 'number') throw new Error ("illegal parameter provided (arr2). only integers allowed.");
+  });
   // Your code here!
 }
 
