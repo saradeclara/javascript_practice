@@ -92,6 +92,7 @@ function checkIngredients(menu, ingredient) {
 function duplicateNumbers(arr1, arr2) {
   if (!arr1) throw new Error("arr1 is required");
   if (!arr2) throw new Error("arr2 is required");
+  if (typeof arr1 !== 'object' && typeof arr2 !== 'object') throw new Error("illegal parameters provided. arr1 and arr2 need to be arrays.")
   // Your code here!
 }
 
