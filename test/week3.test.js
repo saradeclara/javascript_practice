@@ -330,6 +330,12 @@ describe("checkIngredients", () => {
 
 describe("duplicateNumbers", () => {
 
+  test.only("undefined input. function to throw an error.", () => {
+    expect(() => {
+      duplicateNumbers();
+    }).toThrow(Error);
+  })
+
   test.only("arr1 missing. function to throw an error.", () => {
     expect(() => {
       let arr2 = [2, 34, 65];
