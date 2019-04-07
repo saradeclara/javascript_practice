@@ -150,6 +150,19 @@ test("at least one subjects property (array) does not contain strings. function 
 });
 
 describe("checkIngredients", () => {
+ 
+  // undefined input
+  test.only("undefined input. function to throw error.", () => {
+    expect(() => {
+      checkIngredients();
+    }).toThrow(Error);
+  })
+  // every menu item should have name and ingredients
+  // menu is not defined
+  // ingredients is not defined
+  // menu.name can only be a string
+  // menu.ingredients can only contain strings
+
   test.only("returns false if no menu items include the specified ingredient", () => {
     const menu = [
       {
