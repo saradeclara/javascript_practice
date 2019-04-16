@@ -58,6 +58,13 @@ function getCities(users) {
     return (user.id && user.data && user.data.city && user.data.city.id && user.data.city.displayName) ? true : false;
   });
   if (users.length !== checkUsers.length) throw new Error("illegal input provided. each user should have id, data -> city -> id, displayName");
+
+  let cities = [];
+  users.forEach(function(user) {
+      cities.push(user.data.city.displayName);
+  });
+
+  return cities;
 }
 
 function getSquareRoots(nums) {
