@@ -37,9 +37,14 @@ function getIntegers(nums) {
   if (!nums) throw new Error("nums is required");
   if (typeof nums !== 'object') throw new Error("illegal input. nums should only be an array");
   let filteredIntegers = nums.filter(function(item) {
-    return (typeof item === 'numbers') ? true : false;
+    return (typeof item === 'number') ? true : false;
   })
   if (nums.length !== filteredIntegers.length) throw new Error("illegal input provided. nums should only contain numbers.");
+
+  let integers = nums.filter(function(num) {
+    return (Number.isInteger(num)) ? true : false;
+  });
+  return integers;
 }
 
 function getCities(users) {
