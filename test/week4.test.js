@@ -325,7 +325,7 @@ describe.only("getSquareRoots", () => {
   });
   // empty array
   test("empty array function to return empty array.", () => {
-    getSquareRoots([]).toEqual([]);
+    expect(getSquareRoots([])).toEqual([]);
   });
 
   test("gets the square root of each number to 2 decimal places", () => {

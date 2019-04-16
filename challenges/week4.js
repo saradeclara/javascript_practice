@@ -75,6 +75,17 @@ function getSquareRoots(nums) {
   });
   if (nums.length !== filteredNums.length) throw new Error("illegal input. nums should only contain numbers.");
 
+  if (nums.length === 0) {
+    return nums;
+  } else {
+    let sqrRtNums = nums.map(function(num) {
+      return Math.round(Math.sqrt(num)*100)/100;
+    });
+    return sqrRtNums;
+  }
+  
+
+  
 }
 
 function findSentencesContaining(sentences, str) {
