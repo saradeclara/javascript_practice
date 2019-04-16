@@ -1,5 +1,6 @@
 function findSmallNums(nums) {
   if (!nums) throw new Error("nums is required");
+  if (typeof nums !== 'object') throw new Error("illegal input provided. only arrays allowed.")
   // Your code here
 }
 

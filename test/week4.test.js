@@ -9,12 +9,34 @@ const {
   getLongestSides
 } = require("../challenges/week4");
 
-describe("findSmallNums", () => {
+describe.only("findSmallNums", () => {
+  // undefined input
+  test("undefined input. function to throw an error.", () => {
+    expect(() => {
+      findSmallNums();
+    }).toThrow(Error);
+  });
+
+  // illegal input (string, integer, boolean)
+  test("illegal inputs. function to throw error.", () => {
+    expect(() => {
+      findSmallNums('hello');
+    }).toThrow(Error);
+    expect(() => {
+      findSmallNums(54);
+    }).toThrow(Error);
+    expect(() => {
+      findSmallNums(true);
+    }).toThrow(Error);
+  })
+
   test("returns an array of numbers smaller than 1", () => {
     expect(findSmallNums([8, 1, 1.3, 0.9, 0.4, -1])).toEqual([0.9, 0.4, -1]);
     expect(findSmallNums([-7, -243])).toEqual([-7, -243]);
     expect(findSmallNums([100, 88])).toEqual([]);
     expect(findSmallNums([])).toEqual([]);
+      // array with one element greater than 1
+    expect(findSmallNums([54])).toEqual([]);
   });
 });
 
