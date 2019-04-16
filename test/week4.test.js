@@ -72,6 +72,14 @@ describe.only("findNamesBeginningWith", () => {
     expect(findNamesBeginningWith(names, "D")).toEqual(["Dave"]);
     expect(findNamesBeginningWith(names, "F")).toEqual([]);
   });
+  test("char to be lowercase while all names in array are capitalized.", () => {
+    const names = ["Sally", "Dave", "Susan", "Geoff", "Riley", "Sam"];
+    expect(findNamesBeginningWith(names, 's')).toEqual([
+      "Sally",
+      "Susan",
+      "Sam"
+    ]);
+  })
 });
 
 describe("findVerbs", () => {

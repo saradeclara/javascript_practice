@@ -14,6 +14,12 @@ function findNamesBeginningWith(names, char) {
   if (!char) throw new Error("char is required");
   if (typeof names !== 'object' || typeof char !== 'string') throw new Error("Illegal input provided. Names should be an array and char should be a string.");
   
+  const filteredNames = names.filter(function(name) {
+    return (name[0].toUpperCase() === char.toUpperCase()) ? true : false;
+  });
+
+  return filteredNames;
+
 }
 
 function findVerbs(words) {
