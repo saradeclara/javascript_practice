@@ -24,6 +24,13 @@ function findVerbs(words) {
     return (typeof item === 'string') ? true : false;
   })
   if (words.length !== filtered.length) throw new Error("illegal input provided. words should only contain strings.");
+
+  let verbs = words.filter(function(word) {
+      let regex = /^to /gi;
+    return (word.match(regex) !== null) ? true : false;
+  });
+  
+  return verbs;
 }
 
 function getIntegers(nums) {
