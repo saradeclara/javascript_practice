@@ -293,6 +293,41 @@ describe.only("getCities", () => {
 });
 
 describe("getSquareRoots", () => {
+  // undefined input
+  test("undefined input. function to throw error.", () => {
+    expect(() => {
+      getSquareRoots();
+    }).toThrow(Error);
+  });
+  // illegal input (string, boolean, integer)
+  test("illegal input. nums should be array", () => {
+    expect(() => {
+      getSquareRoots('two');
+    }).toThrow(Error);
+    expect(() => {
+      getSquareRoots(true);
+    }).toThrow(Error);
+    expect(() => {
+      getSquareRoots(56);
+    }).toThrow(Error);
+  });
+  // array of non-numbers
+  test("illegal input. nums should be array of numbers", () => {
+    expect(() => {
+      getSquareRoots(['two', 'three']);
+    }).toThrow(Error);
+    expect(() => {
+      getSquareRoots([true, false, true]);
+    }).toThrow(Error);
+    expect(() => {
+      getSquareRoots([2.5, false, 'two']);
+    }).toThrow(Error);
+  });
+  // empty array
+  test("empty array function to return empty array.", () => {
+    getSquareRoots([]).toEqual([]);
+  });
+
   test("gets the square root of each number to 2 decimal places", () => {
     const nums = [36, 77, 12, 355, 92, 5];
     expect(getSquareRoots(nums)).toEqual([6, 8.77, 3.46, 18.84, 9.59, 2.24]);
