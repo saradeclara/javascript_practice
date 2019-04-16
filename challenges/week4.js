@@ -12,7 +12,8 @@ function findSmallNums(nums) {
 function findNamesBeginningWith(names, char) {
   if (!names) throw new Error("names is required");
   if (!char) throw new Error("char is required");
-  // Your code here
+  if (typeof names !== 'object' || typeof char !== 'string') throw new Error("Illegal input provided. Names should be an array and char should be a string.");
+  
 }
 
 function findVerbs(words) {
