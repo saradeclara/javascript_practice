@@ -54,7 +54,10 @@ function getCities(users) {
     return (typeof user === 'object') ? true : false;
   })
   if (users.length !== filteredUsers.length) throw new Error("illegal input provided. nums should only contain numbers.");
-
+  let checkUsers = users.filter(function(user) {
+    return (user.id && user.data && user.data.city && user.data.city.id && user.data.city.displayName) ? true : false;
+  });
+  if (users.length !== checkUsers.length) throw new Error("illegal input provided. each user should have id, data -> city -> id, displayName");
 }
 
 function getSquareRoots(nums) {
