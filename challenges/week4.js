@@ -19,7 +19,11 @@ function findNamesBeginningWith(names, char) {
 
 function findVerbs(words) {
   if (!words) throw new Error("words is required");
-  // Your code here
+  if (typeof words !== 'object') throw new Error("illegal input provided. words should be an array.");
+  let filtered = words.filter(function(item) {
+    return (typeof item === 'string') ? true : false;
+  })
+  if (words.length !== filtered.length) throw new Error("illegal input provided. words should only contain strings.");
 }
 
 function getIntegers(nums) {
