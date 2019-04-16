@@ -69,7 +69,7 @@ function getCities(users) {
 
 function getSquareRoots(nums) {
   if (!nums) throw new Error("nums is required");
-  // Your code here
+  if (typeof nums !== 'object') throw new Error("nums should be an array");
 }
 
 function findSentencesContaining(sentences, str) {

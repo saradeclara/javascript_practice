@@ -184,7 +184,7 @@ describe("getIntegers", () => {
   });
 });
 
-describe.only("getCities", () => {
+describe("getCities", () => {
   // undefined input
   test("undefined input. function to throw error.", () => {
     expect(() => {
@@ -292,7 +292,7 @@ describe.only("getCities", () => {
   });
 });
 
-describe("getSquareRoots", () => {
+describe.only("getSquareRoots", () => {
   // undefined input
   test("undefined input. function to throw error.", () => {
     expect(() => {
