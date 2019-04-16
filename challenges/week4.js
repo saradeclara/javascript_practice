@@ -1,11 +1,9 @@
 function findSmallNums(nums) {
   if (!nums) throw new Error("nums is required");
   if (typeof nums !== 'object') throw new Error("illegal input provided. only arrays allowed.")
-  
   const smallNums = nums.filter(function(num) {
     return (num < 1) ? true : false;
   });
-
   return smallNums;
 }
 
@@ -13,13 +11,10 @@ function findNamesBeginningWith(names, char) {
   if (!names) throw new Error("names is required");
   if (!char) throw new Error("char is required");
   if (typeof names !== 'object' || typeof char !== 'string') throw new Error("Illegal input provided. Names should be an array and char should be a string.");
-  
   const filteredNames = names.filter(function(name) {
     return (name[0].toUpperCase() === char.toUpperCase()) ? true : false;
   });
-
   return filteredNames;
-
 }
 
 function findVerbs(words) {

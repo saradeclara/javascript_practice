@@ -40,7 +40,7 @@ describe("findSmallNums", () => {
   });
 });
 
-describe.only("findNamesBeginningWith", () => {
+describe("findNamesBeginningWith", () => {
   // undefined input
   test("undefined input. function to throw error.", () => {
     expect(() => {
@@ -82,7 +82,43 @@ describe.only("findNamesBeginningWith", () => {
   })
 });
 
-describe("findVerbs", () => {
+describe.only("findVerbs", () => {
+  // undefined input
+  test("undefined input. function to throw error.", () => {
+    expect(() => {
+      findVerbs();
+    }).toThrow(Error);
+  });
+
+   // illegal inputs(string, integer, boolean)
+  test("illegal inputs provided. words should be an array.", () => {
+    expect(() => {
+      findVerbs('to be');
+    }).toThrow(Error);
+    expect(() => {
+      findVerbs(54);
+    }).toThrow(Error);
+    expect(() => {
+      findVerbs(true);
+    }).toThrow(Error);
+  })
+ 
+  // array of non-strings
+  test("array of non-strings provided. words should contain strings only.", () => {
+    expect(() => {
+      findVerbs([1,2,3]);
+    }).toThrow(Error);
+    expect(() => {
+      findVerbs([true, false, true]);
+    }).toThrow(Error);
+    expect(() => {
+      findVerbs(['sara', 12, true]);
+    }).toThrow(Error);
+    expect(() => {
+      findVerbs(['to throw', 'to hide', true]);
+    }).toThrow(Error);
+  })
+
   test("returns an array of words that are considered verbs (because they begin with 'to ')", () => {
     const words = [
       "to eat",
