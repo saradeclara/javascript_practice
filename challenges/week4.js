@@ -49,7 +49,7 @@ function getIntegers(nums) {
 
 function getCities(users) {
   if (!users) throw new Error("users is required");
-  // Your code here
+  if(typeof users !== 'object') throw new Error("illegal input. users should be an array");
 }
 
 function getSquareRoots(nums) {
