@@ -82,7 +82,7 @@ describe("findNamesBeginningWith", () => {
   })
 });
 
-describe.only("findVerbs", () => {
+describe("findVerbs", () => {
   // undefined input
   test("undefined input. function to throw error.", () => {
     expect(() => {
@@ -145,7 +145,37 @@ describe.only("findVerbs", () => {
   });
 });
 
-describe("getIntegers", () => {
+describe.only("getIntegers", () => {
+  // undefined input
+  test("undefined input. function to throw error.", () => {
+    expect(() => {
+      getIntegers();
+    }).toThrow(Error);
+  });
+  // illegal input (string, boolean, integer)
+  test("illegal input. nums should only be an array", () => {
+    expect(() => {
+      getIntegers('three');
+    }).toThrow(Error);
+    expect(() => {
+      getIntegers(true);
+    }).toThrow(Error);
+    expect(() => {
+      getIntegers(2);
+    }).toThrow(Error);
+  });
+  // illegal input (array of non-integers)
+  test("illegal input. nums should only contain integers", () => {
+    expect(() => {
+      getIntegers(['three', 'four']);
+    }).toThrow(Error);
+    expect(() => {
+      getIntegers([2.3, 2.5, true]);
+    }).toThrow(Error);
+    expect(() => {
+      getIntegers([1, 'sara', false]);
+    }).toThrow(Error);
+  });
   test("returns an array containing only integers", () => {
     const nums = [1, 3.5, 2.1, 1, 4, 9];
     expect(getIntegers(nums)).toEqual([1, 1, 4, 9]);
