@@ -1,7 +1,12 @@
 function findSmallNums(nums) {
   if (!nums) throw new Error("nums is required");
   if (typeof nums !== 'object') throw new Error("illegal input provided. only arrays allowed.")
-  // Your code here
+  
+  const smallNums = nums.filter(function(num) {
+    return (num < 1) ? true : false;
+  });
+
+  return smallNums;
 }
 
 function findNamesBeginningWith(names, char) {
