@@ -70,6 +70,11 @@ function getCities(users) {
 function getSquareRoots(nums) {
   if (!nums) throw new Error("nums is required");
   if (typeof nums !== 'object') throw new Error("nums should be an array");
+  let filteredNums = nums.filter(function(num) {
+    return (typeof num === 'number') ? true : false;
+  });
+  if (nums.length !== filteredNums.length) throw new Error("illegal input. nums should only contain numbers.");
+
 }
 
 function findSentencesContaining(sentences, str) {
