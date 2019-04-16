@@ -9,7 +9,7 @@ const {
   getLongestSides
 } = require("../challenges/week4");
 
-describe.only("findSmallNums", () => {
+describe("findSmallNums", () => {
   // undefined input
   test("undefined input. function to throw an error.", () => {
     expect(() => {
@@ -40,7 +40,28 @@ describe.only("findSmallNums", () => {
   });
 });
 
-describe("findNamesBeginningWith", () => {
+describe.only("findNamesBeginningWith", () => {
+  // undefined input
+  test("undefined input. function to throw error.", () => {
+    expect(() => {
+      findNamesBeginningWith();
+    }).toThrow(Error);
+  });
+  // illegal inputs (string, integer, boolean)
+  test("illegal inputs. function to throw error if at least one input is illegal.", () => {
+    expect(() => {
+      // both inputs are illegal
+      findNamesBeginningWith('Sara', 1);
+    }).toThrow(Error);
+    expect(() => {
+      // first input is illegal
+      findNamesBeginningWith('Sara', 'S');
+    }).toThrow(Error);
+    expect(() => {
+      // second input is illegal
+      findNamesBeginningWith(['Sara', 'Marco'], true);
+    }).toThrow(Error);
+  })
   test("returns an array of names beginning with the specified character", () => {
     const names = ["Sally", "Dave", "Susan", "Geoff", "Riley", "Sam"];
     expect(findNamesBeginningWith(names, "S")).toEqual([
