@@ -145,7 +145,7 @@ describe("findVerbs", () => {
   });
 });
 
-describe.only("getIntegers", () => {
+describe("getIntegers", () => {
   // undefined input
   test("undefined input. function to throw error.", () => {
     expect(() => {
@@ -184,7 +184,71 @@ describe.only("getIntegers", () => {
   });
 });
 
-describe("getCities", () => {
+describe.only("getCities", () => {
+  // undefined input
+  test("undefined input. function to throw error.", () => {
+    expect(() => {
+      getCities();
+    }).toThrow(Error);
+  });
+  // illegal input (string, boolean, integer). users should be array.
+  test("illegal input. users should be an array.", () => {
+    expect(() => {
+      getCities('London');
+    }).toThrow(Error);
+    expect(() => {
+      getCities(true);
+    }).toThrow(Error);
+    expect(() => {
+      getCities(54);
+    }).toThrow(Error);
+  });
+
+  // illegal input (array of non-objects)
+  test("illegal input. users should be an array of objects.", () => {
+    expect(() => {
+      getCities(['sara', 'manchester']);
+    }).toThrow(Error);
+    expect(() => {
+      getCities(['sara', true]);
+    }).toThrow(Error);
+    expect(() => {
+      getCities([54,68]);
+    }).toThrow(Error);
+  });
+
+  // users to have all properties required.
+  test("illegal input. some properties are missing. each user should have id, data -> city -> id, displayName", () => {
+    const users2 = [
+      {
+        name: 'sara',
+        data: {
+          city: {
+            id: 1,
+            displayName: "MCR"
+          }
+        }
+      }
+    ];
+    expect(() => {
+      getCities(users2);
+    }).toThrow(Error);
+    const users3 = [
+      {
+        id: 23,
+        data: {
+          city: {
+            id: 1,
+            name: "MCR"
+          }
+        }
+      }
+    ];
+    expect(() => {
+      getCities(users3);
+    }).toThrow(Error);
+
+  })
   test("returns an array of the cities of each user", () => {
     const users = [
       {
