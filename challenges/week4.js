@@ -35,7 +35,11 @@ function findVerbs(words) {
 
 function getIntegers(nums) {
   if (!nums) throw new Error("nums is required");
-  // Your code here
+  if (typeof nums !== 'object') throw new Error("illegal input. nums should only be an array");
+  let filteredIntegers = nums.filter(function(item) {
+    return (typeof item === 'numbers') ? true : false;
+  })
+  if (nums.length !== filteredIntegers.length) throw new Error("illegal input provided. nums should only contain numbers.");
 }
 
 function getCities(users) {
