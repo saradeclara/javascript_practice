@@ -49,7 +49,12 @@ function getIntegers(nums) {
 
 function getCities(users) {
   if (!users) throw new Error("users is required");
-  if(typeof users !== 'object') throw new Error("illegal input. users should be an array");
+  if (typeof users !== 'object') throw new Error("illegal input. users should be an array");
+  let filteredUsers = users.filter(function(user) {
+    return (typeof user === 'object') ? true : false;
+  })
+  if (users.length !== filteredUsers.length) throw new Error("illegal input provided. nums should only contain numbers.");
+
 }
 
 function getSquareRoots(nums) {
