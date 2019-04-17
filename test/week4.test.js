@@ -35,7 +35,7 @@ describe("findSmallNums", () => {
     expect(findSmallNums([-7, -243])).toEqual([-7, -243]);
     expect(findSmallNums([100, 88])).toEqual([]);
     expect(findSmallNums([])).toEqual([]);
-      // array with one element greater than 1
+    // array with one element greater than 1
     expect(findSmallNums([54])).toEqual([]);
   });
 });
@@ -90,7 +90,7 @@ describe("findVerbs", () => {
     }).toThrow(Error);
   });
 
-   // illegal inputs(string, integer, boolean)
+  // illegal inputs(string, integer, boolean)
   test("illegal inputs provided. words should be an array.", () => {
     expect(() => {
       findVerbs('to be');
@@ -102,11 +102,11 @@ describe("findVerbs", () => {
       findVerbs(true);
     }).toThrow(Error);
   })
- 
+
   // array of non-strings
   test("array of non-strings provided. words should contain strings only.", () => {
     expect(() => {
-      findVerbs([1,2,3]);
+      findVerbs([1, 2, 3]);
     }).toThrow(Error);
     expect(() => {
       findVerbs([true, false, true]);
@@ -213,7 +213,7 @@ describe("getCities", () => {
       getCities(['sara', true]);
     }).toThrow(Error);
     expect(() => {
-      getCities([54,68]);
+      getCities([54, 68]);
     }).toThrow(Error);
   });
 
@@ -357,13 +357,13 @@ describe("findSentencesContaining", () => {
     }).toThrow(Error);
     expect(() => {
       findSentencesContaining(true, ["You should specify a license for your package so that people know how they are permitted to use it",
-      "The main field is a module ID that is the primary entry point to your program"]);
+        "The main field is a module ID that is the primary entry point to your program"]);
     }).toThrow(Error);
   });
   // only array of strings
   test("illegal input. sentences can only be an array of strings.", () => {
     expect(() => {
-      findSentencesContaining([1,2,3], 'license');
+      findSentencesContaining([1, 2, 3], 'license');
     }).toThrow(Error);
     expect(() => {
       findSentencesContaining([true, false, false], 'license');
@@ -381,7 +381,7 @@ describe("findSentencesContaining", () => {
     "Put keywords in it. It's an array of strings. This helps people discover your package as it's listed in npm search",
     "The bugs field should hold the url to your project’s issue tracker and / or the email address to which issues should be reported."
   ];
-  
+
 
   test("returns only the sentences containing the specified string", () => {
     expect(
@@ -405,7 +405,7 @@ describe("findSentencesContaining", () => {
   });
 });
 
-describe.only("getLongestSides", () => {
+describe("getLongestSides", () => {
   // undefined input
   test("undefined input. this function needs an input.", () => {
     expect(() => {
@@ -427,7 +427,7 @@ describe.only("getLongestSides", () => {
   // only array of arrays allowed
   test("illegal input. triangles should be an array of integers.", () => {
     expect(() => {
-      getLongestSides(['one', 'two', 'three'], [1,2,3]);
+      getLongestSides(['one', 'two', 'three'], [1, 2, 3]);
     }).toThrow(Error);
   })
 
