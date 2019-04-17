@@ -424,10 +424,10 @@ describe.only("getLongestSides", () => {
       getLongestSides(1);
     }).toThrow(Error);
   })
-  // only array of integers allowed
+  // only array of arrays allowed
   test("illegal input. triangles should be an array of integers.", () => {
     expect(() => {
-      getLongestSides(['one', 'two', 'three']);
+      getLongestSides(['one', 'two', 'three'], [1,2,3]);
     }).toThrow(Error);
   })
 

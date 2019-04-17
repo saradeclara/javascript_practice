@@ -107,7 +107,20 @@ function findSentencesContaining(sentences, str) {
 
 function getLongestSides(triangles) {
   if (!triangles) throw new Error("triangles is required");
-  // Your code here
+  if (typeof triangles !== 'object') throw new Error("triangles should only be an array");
+  triangles.forEach(function(item) {
+    if (typeof item !== 'object') {
+      throw new Error("triangles should only be an array of arrays")
+    } else {
+      item.forEach(function(element) {
+        if (typeof element !== 'number') {
+          throw new Error('triangles should only be an array of arrays containing numbers.');
+        }
+      })
+    }
+  });
+
+  
 }
 
 module.exports = {
