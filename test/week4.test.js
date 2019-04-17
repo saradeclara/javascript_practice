@@ -334,7 +334,7 @@ describe("getSquareRoots", () => {
   });
 });
 
-describe.only("findSentencesContaining", () => {
+describe("findSentencesContaining", () => {
   // undefined input
   test("undefined input. this function needs an input.", () => {
     expect(() => {
@@ -405,7 +405,32 @@ describe.only("findSentencesContaining", () => {
   });
 });
 
-describe("getLongestSides", () => {
+describe.only("getLongestSides", () => {
+  // undefined input
+  test("undefined input. this function needs an input.", () => {
+    expect(() => {
+      getLongestSides();
+    }).toThrow(Error);
+  });
+  // only array allowed
+  test("illegal input. triangles should be an array.", () => {
+    expect(() => {
+      getLongestSides('thirty');
+    }).toThrow(Error);
+    expect(() => {
+      getLongestSides(true);
+    }).toThrow(Error);
+    expect(() => {
+      getLongestSides(1);
+    }).toThrow(Error);
+  })
+  // only array of integers allowed
+  test("illegal input. triangles should be an array of integers.", () => {
+    expect(() => {
+      getLongestSides(['one', 'two', 'three']);
+    }).toThrow(Error);
+  })
+
   test("returns the longest side of each set of triangle data", () => {
     const data = [[6, 7, 10], [9, 3, 6], [6, 3, 5], [6, 13, 12], [7, 12, 8]];
     expect(getLongestSides(data)).toEqual([10, 9, 6, 13, 12]);
