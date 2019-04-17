@@ -94,6 +94,15 @@ function findSentencesContaining(sentences, str) {
   });
   if (sentences.length !== filteredArray.length) throw new Error("illegal input. array should only contain strings.");
 
+  let sentencesContainingStr = [];
+
+  sentences.forEach(function(sentence) {
+    let regex = new RegExp(str, 'gim');
+    if (sentence.match(regex) !== null) {
+      sentencesContainingStr.push(sentence);
+    }
+  })
+  return sentencesContainingStr;
 }
 
 function getLongestSides(triangles) {

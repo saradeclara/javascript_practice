@@ -381,6 +381,7 @@ describe.only("findSentencesContaining", () => {
     "Put keywords in it. It's an array of strings. This helps people discover your package as it's listed in npm search",
     "The bugs field should hold the url to your project’s issue tracker and / or the email address to which issues should be reported."
   ];
+  
 
   test("returns only the sentences containing the specified string", () => {
     expect(
