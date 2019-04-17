@@ -88,7 +88,12 @@ function getSquareRoots(nums) {
 function findSentencesContaining(sentences, str) {
   if (!sentences) throw new Error("sentences is required");
   if (!str) throw new Error("str is required");
-  // Your code here
+  if (typeof sentences !== 'object' || typeof str !== 'string') throw new Error("illegal input provided. sentences can only be an array and str can only be a string.");
+  let filteredArray = sentences.filter(function(sentence) {
+    return (typeof sentence === 'string') ? true : false;
+  });
+  if (sentences.length !== filteredArray.length) throw new Error("illegal input. array should only contain strings.");
+
 }
 
 function getLongestSides(triangles) {
