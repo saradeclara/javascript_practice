@@ -82,10 +82,7 @@ function getSquareRoots(nums) {
       return Math.round(Math.sqrt(num)*100)/100;
     });
     return sqrRtNums;
-  }
-  
-
-  
+  } 
 }
 
 function findSentencesContaining(sentences, str) {

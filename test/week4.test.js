@@ -292,7 +292,7 @@ describe("getCities", () => {
   });
 });
 
-describe.only("getSquareRoots", () => {
+describe("getSquareRoots", () => {
   // undefined input
   test("undefined input. function to throw error.", () => {
     expect(() => {
@@ -334,7 +334,41 @@ describe.only("getSquareRoots", () => {
   });
 });
 
-describe("findSentencesContaining", () => {
+describe.only("findSentencesContaining", () => {
+  // undefined input
+  test("undefined input. this function needs an input.", () => {
+    expect(() => {
+      findSentencesContaining();
+    }).toThrow(Error);
+  });
+  // only array allowed
+  test("illegal input, sentences can only be an array and str can only be a string.", () => {
+    expect(() => {
+      findSentencesContaining(1, 'license');
+    }).toThrow(Error);
+    expect(() => {
+      findSentencesContaining(true, 'license');
+    }).toThrow(Error);
+    expect(() => {
+      findSentencesContaining('You should specify a license for your package so that people know how they are permitted to use it', 'license');
+    }).toThrow(Error);
+    expect(() => {
+      findSentencesContaining(true, 1);
+    }).toThrow(Error);
+    expect(() => {
+      findSentencesContaining(true, ["You should specify a license for your package so that people know how they are permitted to use it",
+      "The main field is a module ID that is the primary entry point to your program"]);
+    }).toThrow(Error);
+  });
+  // only array of strings
+  test("illegal input. sentences can only be an array of strings.", () => {
+    expect(() => {
+      findSentencesContaining([1,2,3], 'license');
+    }).toThrow(Error);
+    expect(() => {
+      findSentencesContaining([true, false, false], 'license');
+    }).toThrow(Error);
+  });
   const sentencesAboutPackageJson = [
     "You should specify a license for your package so that people know how they are permitted to use it",
     "The main field is a module ID that is the primary entry point to your program",
