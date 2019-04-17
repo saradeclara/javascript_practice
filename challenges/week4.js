@@ -120,6 +120,16 @@ function getLongestSides(triangles) {
     }
   });
 
+let longestSides = [];
+triangles.forEach(function(item) {
+  item.sort(function(a,b){return a-b});
+  item.forEach(function(number, index) {
+    if (index === item.length-1) {
+      longestSides.push(number);
+    }
+  })
+});
+return longestSides;
   
 }
 
