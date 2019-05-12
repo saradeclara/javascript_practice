@@ -103,6 +103,20 @@ describe.only("reverseNumber", () => {
     expect(reverseNumber(12345)).toBe(54321);
     expect(reverseNumber(100)).toBe(1); // No leading 0 necessary
   });
+
+  // new test: undefined input
+  test("undefined input. function to throw error.", () => {
+    expect(() => {
+      reverseNumber()
+    }).toThrow(Error)
+  })
+
+  // new test: type check
+  test("illegal input provided. function to throw error.", () => {
+    expect(() => {
+      reverseNumber(true)
+    }).toThrow(Error)
+  })
 });
 
 describe("sumArrays", () => {
