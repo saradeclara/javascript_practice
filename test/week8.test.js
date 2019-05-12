@@ -26,6 +26,21 @@ describe.only("findNextNumber", () => {
   test("if the number is found in the final index position of the array, returns null", () => {
     expect(findNextNumber([5, 3, 7, 8, 1, 3, 10], 10)).toBe(null);
   });
+
+  // new test: parameters are undefined. function to throw error.
+  test("parameters are undefined. function throws error.", () => {
+    expect(() => {
+      findNextNumber()
+    }).toThrow(Error);
+  });
+
+  // new test: nums is empty array. function throws error.
+  test("nums is empty array. function to throw error", () => {
+    expect(() => {
+      findNextNumber([], 8)
+    }).toThrow(Error);
+  });
+
 });
 
 describe("count1sand0s", () => {

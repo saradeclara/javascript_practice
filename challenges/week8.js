@@ -1,8 +1,9 @@
 const findNextNumber = (nums, n) => {
   if (nums === undefined) throw new Error("nums is required");
   if (n === undefined) throw new Error("n is required");
-  let found = nums.findIndex((element) => element === n)
-  if (nums.includes(n) && nums[nums.length-1] !== n) {
+  if (nums.length === 0) throw new Error("nums cannot be empty");
+  let found = nums.findIndex((element) => element === n);
+  if (nums.includes(n) && nums[nums.length - 1] !== n) {
     return nums[found + 1]
   } else {
     return null
