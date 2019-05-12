@@ -78,7 +78,17 @@ describe.only("count1sand0s", () => {
     });
   });
 
-  
+  // new test: illegal input. str can only be a string. throws an error.
+  test("illegal input. str can only be a string.", () => {
+    expect(() => {
+      count1sand0s(123456)
+    }).toThrow(Error);
+    expect(() => {
+      count1sand0s(true)
+    }).toThrow(Error);
+  })
+
+  // new test: a string is provided which does not only contain 1s and 0s. throws an error.
 });
 
 describe("reverseNumber", () => {

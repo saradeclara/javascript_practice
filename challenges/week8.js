@@ -17,6 +17,7 @@ const findNextNumber = (nums, n) => {
 
 const count1sand0s = str => {
   if (str === undefined) throw new Error("str is required");
+  if (typeof str !== 'string') throw new Error("illegal input. str should be a string.");
   let oneCounter = 0;
   let zeroCounter = 0;
   str.split("").forEach(char => {
