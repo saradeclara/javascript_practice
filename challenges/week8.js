@@ -23,6 +23,7 @@ const count1sand0s = str => {
   str.split("").forEach(char => {
     if (char === '0') zeroCounter++ 
     else if (char === '1') oneCounter++
+    else throw new Error("this string should only contain 1s and 0s")
   })
   let result = {
     0: zeroCounter,

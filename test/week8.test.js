@@ -89,6 +89,11 @@ describe.only("count1sand0s", () => {
   })
 
   // new test: a string is provided which does not only contain 1s and 0s. throws an error.
+  test("a string is provided which does not only contain 1s and 0s.", () => {
+    expect(() => {
+      count1sand0s('hello world')
+    }).toThrow(Error)
+  })
 });
 
 describe("reverseNumber", () => {
