@@ -260,6 +260,11 @@ describe.only("findNeedle", () => {
   });
 
   // undefined input
+  test("undefined input. function to throw error", () => {
+    expect(() => {
+      findNeedle()
+    }).toThrow(Error);
+  })
   // type of haystack
   // type of string
 });
