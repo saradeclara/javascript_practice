@@ -73,7 +73,8 @@ const arrShift = arr => {
 const findNeedle = (haystack, searchTerm) => {
   if (haystack === undefined) throw new Error("haystack is required");
   if (searchTerm === undefined) throw new Error("searchTerm is required");
- 
+  if (typeof haystack !== 'object' || typeof searchTerm !== 'string') throw new Error("input provided is illegal. haystack should be an object and searchTerm should be a string");
+  if (Array.isArray(haystack)) throw new Error("haystack is an array. haystack should be an object.");
   const checkedValues = Object.values(haystack).map(value => {
     return (value.toString().toUpperCase().includes(searchTerm.toUpperCase()))
   })

@@ -265,8 +265,22 @@ describe.only("findNeedle", () => {
       findNeedle()
     }).toThrow(Error);
   })
-  // type of haystack
-  // type of string
+
+  // type of haystack and type of string
+  test("input provided is illegal. haystack should be object and searchTerm should be a string.", () => {
+    expect(() => {
+      findNeedle(['liverpool'], 'liverpool')
+    }).toThrow(Error);
+    expect(() => {
+      findNeedle(true, 'liverpool')
+    }).toThrow(Error);
+    expect(() => {
+      findNeedle(123456, 'liverpool')
+    }).toThrow(Error);
+    expect(() => {
+      findNeedle({name: 'Sara', age: 30}, 123456)
+    }).toThrow(Error);
+  })
 });
 
 describe("getWordFrequencies", () => {
