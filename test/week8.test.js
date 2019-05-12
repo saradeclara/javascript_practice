@@ -8,7 +8,7 @@ const {
   getWordFrequencies
 } = require("../challenges/week8");
 
-describe("findNextNumber", () => {
+describe.only("findNextNumber", () => {
   test("returns the next number after the given number in the array", () => {
     expect(findNextNumber([5, 3, 7, 8, 1, 10], 7)).toBe(8);
     expect(findNextNumber([5, 3, 7, 8, 1, 10], 1)).toBe(10);
