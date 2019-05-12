@@ -41,6 +41,18 @@ describe.only("findNextNumber", () => {
     }).toThrow(Error);
   });
 
+  // new test: illegal inputs. nums can only array and n can only be an integer.
+  test("if inputs are illegal, function to throw error.", () => {
+    expect(() => {
+      findNextNumber(['a', 'b'], 2)
+    }).toThrow(Error);
+    expect(() => {
+      findNextNumber([1, 2, 3], true)
+    }).toThrow(Error);
+    expect(() => {
+      findNextNumber(['a', 'b'], false)
+    }).toThrow(Error);
+  })
 });
 
 describe("count1sand0s", () => {

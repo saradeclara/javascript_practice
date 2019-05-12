@@ -2,6 +2,11 @@ const findNextNumber = (nums, n) => {
   if (nums === undefined) throw new Error("nums is required");
   if (n === undefined) throw new Error("n is required");
   if (nums.length === 0) throw new Error("nums cannot be empty");
+  if (typeof num !== 'object' && typeof n !== 'number') 
+     throw new Error("illegal inputs. nums should be an array and n should be an integer.");
+  const checkedNums = nums.filter(num => typeof num === 'number');
+  if (checkedNums.length !== nums.length) throw new Error("illegal input provided. nums can only contain integers.");
+  
   let found = nums.findIndex((element) => element === n);
   if (nums.includes(n) && nums[nums.length - 1] !== n) {
     return nums[found + 1]
