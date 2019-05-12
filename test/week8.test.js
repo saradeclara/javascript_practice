@@ -126,7 +126,7 @@ describe("reverseNumber", () => {
   })
 });
 
-describe.only("sumArrays", () => {
+describe("sumArrays", () => {
   test("returns the total of the numbers in all sub arrays", () => {
     const arrs = [[1, 2, 3], [6, 3, 1], [1], [9, 10], [3, 5]];
     expect(sumArrays(arrs)).toBe(44); 
@@ -169,7 +169,7 @@ describe.only("sumArrays", () => {
   })
 });
 
-describe("arrShift", () => {
+describe.only("arrShift", () => {
   test("returns an array with the first and last items swapped", () => {
     expect(arrShift([1, 2])).toEqual([2, 1]);
     expect(arrShift([1, 2, 3])).toEqual([3, 2, 1]);

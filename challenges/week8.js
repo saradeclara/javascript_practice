@@ -2,8 +2,8 @@ const findNextNumber = (nums, n) => {
   if (nums === undefined) throw new Error("nums is required");
   if (n === undefined) throw new Error("n is required");
   if (nums.length === 0) throw new Error("nums cannot be empty");
-  if (typeof num !== 'object' && typeof n !== 'number') 
-     throw new Error("illegal inputs. nums should be an array and n should be an integer.");
+  if (typeof num !== 'object' && typeof n !== 'number')
+    throw new Error("illegal inputs. nums should be an array and n should be an integer.");
   const checkedNums = nums.filter(num => typeof num === 'number');
   if (checkedNums.length !== nums.length) throw new Error("illegal input provided. nums can only contain integers.");
 
@@ -22,7 +22,7 @@ const count1sand0s = str => {
   let oneCounter = 0;
   let zeroCounter = 0;
   str.split("").forEach(char => {
-    if (char === '0') zeroCounter++ 
+    if (char === '0') zeroCounter++
     else if (char === '1') oneCounter++
     else throw new Error("this string should only contain 1s and 0s")
   })
@@ -43,12 +43,12 @@ const reverseNumber = n => {
 const sumArrays = arrs => {
   if (arrs === undefined) throw new Error("arrs is required");
   if (typeof arrs !== 'object') throw new Error("arrs can only be an array");
-  
+
   let flatArray = [].concat(...arrs);
   if (arrs.length === 0 || flatArray.length === 0) throw new Error("arrs cannot be empty");
   let checkedNums = flatArray.filter(el => typeof el === 'number');
-  if (checkedNums.length !== flatArray.length)throw new Error("illegal input provided. arrs can only contain integers.");
-  
+  if (checkedNums.length !== flatArray.length) throw new Error("illegal input provided. arrs can only contain integers.");
+
 
   const add = (a, b) => a + b;
   const sum = flatArray.reduce(add);
@@ -57,7 +57,17 @@ const sumArrays = arrs => {
 
 const arrShift = arr => {
   if (arr === undefined) throw new Error("arr is required");
-  // Your code here!
+
+  if (arr.length < 2) {
+    return arr
+  } else {
+    const first = arr.shift();
+    const last = arr.pop();
+    arr.unshift(last)
+    arr.push(first)
+    return arr
+  }
+
 };
 
 const findNeedle = (haystack, searchTerm) => {
