@@ -180,6 +180,26 @@ describe.only("arrShift", () => {
     expect(arrShift([1])).toEqual([1]);
     expect(arrShift([])).toEqual([]);
   });
+
+  // new test: undefined input.
+  test("undefined input. function to throw error.", () => {
+    expect(() => {
+      arrShift()
+    }).toThrow(Error)
+  });
+
+  // new test: type check
+  test("type check. function to throw error if arr is not array.", () => {
+    expect(() => {
+      arrShift(123456)
+    }).toThrow(Error);
+    expect(() => {
+      arrShift(true)
+    }).toThrow(Error);
+    expect(() => {
+      arrShift('true')
+    }).toThrow(Error);
+  })
 });
 
 describe("findNeedle", () => {
