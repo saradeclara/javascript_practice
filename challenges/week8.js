@@ -42,8 +42,9 @@ const reverseNumber = n => {
 
 const sumArrays = arrs => {
   if (arrs === undefined) throw new Error("arrs is required");
-  
   let flatArray = [].concat(...arrs);
+  if (arrs.length === 0 || flatArray.length === 0) throw new Error("arrs cannot be empty");
+  
   const add = (a, b) => a + b;
   const sum = flatArray.reduce(add);
   return sum

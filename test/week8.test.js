@@ -129,8 +129,32 @@ describe("reverseNumber", () => {
 describe.only("sumArrays", () => {
   test("returns the total of the numbers in all sub arrays", () => {
     const arrs = [[1, 2, 3], [6, 3, 1], [1], [9, 10], [3, 5]];
-    expect(sumArrays(arrs)).toBe(44);
+    expect(sumArrays(arrs)).toBe(44); 
+    const arrs1 = [[], [4, 1, 2, 2, 1], [0]];
+    expect(sumArrays(arrs1)).toBe(10);
   });
+
+  // new test: undefined input
+  test("undefined input. function to throw error.", () => {
+    expect(() => {
+      sumArrays()
+    }).toThrow(Error)
+  })
+
+  // new test: empty array or sub arrays as input
+  test("empy array or empty subarrays as input. if length of flat array is 0, function to throw error.", () => {
+    expect(() => {
+      sumArrays([])
+    }).toThrow(Error);
+    expect(sumArrays([1, 2, 2], [])).toBe(5);
+    expect(() => {
+      sumArrays([[]])
+    }).toThrow(Error);
+  })
+
+  // new test: type check
+
+  // new test: type check of subarrays
 });
 
 describe("arrShift", () => {
