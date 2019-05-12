@@ -6,7 +6,7 @@ const findNextNumber = (nums, n) => {
      throw new Error("illegal inputs. nums should be an array and n should be an integer.");
   const checkedNums = nums.filter(num => typeof num === 'number');
   if (checkedNums.length !== nums.length) throw new Error("illegal input provided. nums can only contain integers.");
-  
+
   let found = nums.findIndex((element) => element === n);
   if (nums.includes(n) && nums[nums.length - 1] !== n) {
     return nums[found + 1]
@@ -17,7 +17,17 @@ const findNextNumber = (nums, n) => {
 
 const count1sand0s = str => {
   if (str === undefined) throw new Error("str is required");
-  // Your code here!
+  let oneCounter = 0;
+  let zeroCounter = 0;
+  str.split("").forEach(char => {
+    if (char === '0') zeroCounter++ 
+    else if (char === '1') oneCounter++
+  })
+  let result = {
+    0: zeroCounter,
+    1: oneCounter
+  }
+  return result
 };
 
 const reverseNumber = n => {
