@@ -42,9 +42,14 @@ const reverseNumber = n => {
 
 const sumArrays = arrs => {
   if (arrs === undefined) throw new Error("arrs is required");
+  if (typeof arrs !== 'object') throw new Error("arrs can only be an array");
+  
   let flatArray = [].concat(...arrs);
   if (arrs.length === 0 || flatArray.length === 0) throw new Error("arrs cannot be empty");
+  let checkedNums = flatArray.filter(el => typeof el === 'number');
+  if (checkedNums.length !== flatArray.length)throw new Error("illegal input provided. arrs can only contain integers.");
   
+
   const add = (a, b) => a + b;
   const sum = flatArray.reduce(add);
   return sum

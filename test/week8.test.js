@@ -152,9 +152,21 @@ describe.only("sumArrays", () => {
     }).toThrow(Error);
   })
 
-  // new test: type check
-
-  // new test: type check of subarrays
+  // new test: type check, type check of subarrays
+  test("arrs can only contains integers.", () => {
+    expect(() => {
+      sumArrays(true)
+    }).toThrow(Error);
+    expect(() => {
+      sumArrays(123456)
+    }).toThrow(Error);
+    expect(() => {
+      sumArrays(['a', 1, 3], [2, 5])
+    }).toThrow(Error);
+    expect(() => {
+      sumArrays(['a', 'b', 'c'], [true, false, false])
+    }).toThrow(Error);
+  })
 });
 
 describe("arrShift", () => {
