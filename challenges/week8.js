@@ -18,6 +18,7 @@ const findNextNumber = (nums, n) => {
 const count1sand0s = str => {
   if (str === undefined) throw new Error("str is required");
   if (typeof str !== 'string') throw new Error("illegal input. str should be a string.");
+
   let oneCounter = 0;
   let zeroCounter = 0;
   str.split("").forEach(char => {
@@ -35,12 +36,17 @@ const count1sand0s = str => {
 const reverseNumber = n => {
   if (n === undefined) throw new Error("n is required");
   if (typeof n !== 'number') throw new Error("n should be an integer")
+
   return parseInt(n.toString().split('').reverse().join(''));
 };
 
 const sumArrays = arrs => {
   if (arrs === undefined) throw new Error("arrs is required");
-  // Your code here!
+  
+  let flatArray = [].concat(...arrs);
+  const add = (a, b) => a + b;
+  const sum = flatArray.reduce(add);
+  return sum
 };
 
 const arrShift = arr => {
