@@ -2,7 +2,7 @@
 
 This week's challenges are all around looping!
 
-We have added 10 challenges for you to complete (sorry!) and we hope that by the end you will feel very confident with loops, if you don't already.
+We have added a number of challenge for you to complete and we hope that by the end you will feel very confident with loops, if you don't already.
 
 1. Remind yourself of how a for loop works, and how it can be used to access items in an array or characters in a string. If you need a reminder of the syntax, take a look at [this repl project](https://repl.it/repls/UniformAdmiredPolyhedron).
 2. Solve all the challenges using a for loop and make a commit when you are done. (You can make commits along the way too but make sure they signal that you are solving the challenges with a for loop)
