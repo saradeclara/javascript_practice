@@ -202,7 +202,7 @@ describe("arrShift", () => {
   })
 });
 
-describe.only("findNeedle", () => {
+describe("findNeedle", () => {
   test("returns true if any of the properties of an object contain the specified string", () => {
     const obj1 = {
       name: "LINNMON",
@@ -283,7 +283,7 @@ describe.only("findNeedle", () => {
   })
 });
 
-describe("getWordFrequencies", () => {
+describe.only("getWordFrequencies", () => {
   test("returns the frequencies of each word in a string", () => {
     expect(getWordFrequencies("hello world")).toEqual({
       hello: 1,
