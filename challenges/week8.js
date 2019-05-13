@@ -83,6 +83,7 @@ const findNeedle = (haystack, searchTerm) => {
 
 const getWordFrequencies = str => {
   if (str === undefined) throw new Error("str is required");
+  if (typeof str !== 'string') throw new Error("str should be a string");
   const countUp = (arr, term) => {
     let counter = 0;
     arr.map(el => {

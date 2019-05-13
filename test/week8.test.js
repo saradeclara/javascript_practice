@@ -283,7 +283,7 @@ describe("findNeedle", () => {
   })
 });
 
-describe.only("getWordFrequencies", () => {
+describe("getWordFrequencies", () => {
   test("returns the frequencies of each word in a string", () => {
     expect(getWordFrequencies("hello world")).toEqual({
       hello: 1,
@@ -308,6 +308,15 @@ describe.only("getWordFrequencies", () => {
     expect(getWordFrequencies("Hello hello hello")).toEqual({
       hello: 3
     });
+    // all uppercase
+    expect(getWordFrequencies("HELLO HELLO HELLO WORLD")).toEqual({
+      hello: 3,
+      world: 1
+    });
+    // uppercase/lowercase words
+    expect(getWordFrequencies("HeLLo hEllo HELLO hello")).toEqual({
+      hello: 4
+    });
   });
 
   test("ignores punctuation", () => {
@@ -322,4 +331,23 @@ describe.only("getWordFrequencies", () => {
       here: 1
     });
   });
+
+  // undefined input
+  test("undefined input. function to throw error.", () => {
+    expect(() => {
+      getWordFrequencies()
+    }).toThrow(Error)
+  })
+  // type check
+  test("illegal input. str should be a string.", () => {
+    expect(() => {
+      getWordFrequencies(123456)
+    }).toThrow(Error);
+    expect(() => {
+      getWordFrequencies(true)
+    }).toThrow(Error);
+    expect(() => {
+      getWordFrequencies(['sara', 'hello'])
+    }).toThrow(Error);
+  })
 });
