@@ -129,7 +129,7 @@ describe("reverseNumber", () => {
 describe("sumArrays", () => {
   test("returns the total of the numbers in all sub arrays", () => {
     const arrs = [[1, 2, 3], [6, 3, 1], [1], [9, 10], [3, 5]];
-    expect(sumArrays(arrs)).toBe(44); 
+    expect(sumArrays(arrs)).toBe(44);
     const arrs1 = [[], [4, 1, 2, 2, 1], [0]];
     expect(sumArrays(arrs1)).toBe(10);
   });
@@ -278,7 +278,7 @@ describe("findNeedle", () => {
       findNeedle(123456, 'liverpool')
     }).toThrow(Error);
     expect(() => {
-      findNeedle({name: 'Sara', age: 30}, 123456)
+      findNeedle({ name: 'Sara', age: 30 }, 123456)
     }).toThrow(Error);
   })
 });

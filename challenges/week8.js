@@ -58,7 +58,7 @@ const sumArrays = arrs => {
 const arrShift = arr => {
   if (arr === undefined) throw new Error("arr is required");
   if (typeof arr !== 'object') throw new Error("arr should be an array");
-  
+
   if (arr.length < 2) {
     return arr
   } else {
@@ -87,7 +87,7 @@ const getWordFrequencies = str => {
   const countUp = (arr, term) => {
     let counter = 0;
     arr.map(el => {
-     if (el === term) counter++
+      if (el === term) counter++
     })
     return counter
   }
