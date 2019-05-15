@@ -84,20 +84,35 @@ const findNeedle = (haystack, searchTerm) => {
 const getWordFrequencies = str => {
   if (str === undefined) throw new Error("str is required");
   if (typeof str !== 'string') throw new Error("str should be a string");
-  const countUp = (arr, term) => {
-    let counter = 0;
-    arr.map(el => {
-      if (el === term) counter++
-    })
-    return counter
-  }
-  let o = new Object();
-  let checkedStr = str.toLowerCase().replace(/[^a-zA-Z ]/gm, '');
-  checkedStr.split(" ").forEach((word, index, array) => {
-    o[word] = countUp(array, word)
+  
+  // second solution: forEach w/ incremental counter 
+  const frequencies = new Object();
+  let cleanStr = str.toLowerCase().replace(/[^a-zA-Z ]/gm, '');
+  cleanStr.split(' ').forEach(char => {
+    if (frequencies[char] === undefined) {
+      frequencies[char] = 1;
+    } else {
+      frequencies[char] += 1;
+    }
   })
-  return o
+
+  return frequencies;
 };
+// first solution: countUp function w/ forEach loop
+// const countUp = (arr, term) => {
+//   let counter = 0;
+//   arr.map(el => {
+//     if (el === term) counter++
+//   })
+//   return counter
+// }
+// let o = new Object();
+// let checkedStr = str.toLowerCase().replace(/[^a-zA-Z ]/gm, '');
+// checkedStr.split(" ").forEach((word, index, array) => {
+//   o[word] = countUp(array, word)
+// })
+// return o
+// };
 
 module.exports = {
   findNextNumber,
