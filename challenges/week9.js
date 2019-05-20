@@ -80,8 +80,29 @@ const createMatrix = (n, fill) => {
  * @returns {Boolean}
  */
 const areWeCovered = (staff, day) => {
+  if (!Array.isArray(staff)) throw new Error("staff should be an array");
+  if (typeof day !== 'string') throw new Error("day should be a string");
   if (!staff) throw new Error("staff is required");
   if (!day) throw new Error("day is required");
+  if (staff.length === 0) return false;
+ 
+  // initialise staffCounter = 0
+  // loop throught staff array 
+  // loop through rota of each employee
+  //  and increment counter every time 
+  // there is available staff (3 or more)
+
+  let staffCounter = 0;
+  staff.forEach(employee => {
+    employee.rota.forEach(rotaDay => {
+      // case insensitive check
+      if (rotaDay.toLowerCase() === day.toLowerCase()) {
+        staffCounter += 1;
+      }
+    })
+  });
+
+  return (staffCounter >= 3);
 };
 
 module.exports = {
