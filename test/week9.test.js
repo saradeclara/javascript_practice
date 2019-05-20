@@ -53,6 +53,7 @@ describe("areWeCovered", () => {
         expect(areWeCovered([], "Friday")).toBe(false);
         expect(areWeCovered([], "Saturday")).toBe(false);
     });
+
     // illegal input, staff should be array of objects, day should be a string
     test("check that staff is an array of objects and that day is a string", () => {
         const staff = [
@@ -65,6 +66,38 @@ describe("areWeCovered", () => {
         expect(() => { areWeCovered(staff, false) }).toThrow("day should be a string");
         expect(() => { areWeCovered(staff, ['monday']) }).toThrow("day should be a string");
     })
+
+    // check day is a string containing a day of the week
+    test('day should be a day of the week', () => {
+        const staff = [
+            { name: "stephen", rota: ["monday", "tuesday"] },
+        ];
+      expect(() => { areWeCovered(staff, 'stephen') }).toThrow("day should be a day of the week [e.g. Monday, Tuesday,...]")
+    });
+
+    // check staff is array of objects
+    test('staff should be an array of objects', () => {
+      expect(() => {
+          areWeCovered(['paul', 'stephen', 'sally'], 'monday')
+      }).toThrow("staff should be an array of objects");
+    })
+    
+    // check staff is array of objects, each object has two properties (name and rota)
+    test('check staff array is formatted correctly', () => {
+        expect(() => {
+            areWeCovered([{fullName: 'paul', schedule: ['monday', 'tuesday']}], 'monday')
+        }).toThrow("staff not formatted correctly (every obj has 2 props, name and rota)");
+    })
+
+    // check the name property is a string and rota property is an array of strings
+    test('name prop should be a string and rota prop should be array of strings', () => {
+      expect(() => {
+          areWeCovered([
+              { name: true, rota: false }
+          ]).toThrow("name prop should be a string and rota prop should be array of strings")
+      })
+    })
+    
     // check it returns false if less than 3 available staff
     test("returns false if there are less than 3 scheduled staff on a day", () => {
         const staff = [
@@ -77,7 +110,7 @@ describe("areWeCovered", () => {
         expect(areWeCovered(staff, "saturday")).toBe(false);
     });
 
-    // 3 staff available, true
+    // 3 or more staff available, true
     test("returns true if there is available staff (3 or more)", () => {
         const staff = [
             { name: "stephen", rota: ["monday", "tuesday"] },
@@ -87,7 +120,8 @@ describe("areWeCovered", () => {
         ];
         expect(areWeCovered((staff), "Monday")).toBe(true);
     });
-            // 3 staff available, true
+
+    // 3 staff available, true
     test("returns true if there is available staff (3 or more)", () => {
         const staff = [
             { name: "stephen", rota: ["monday", "tuesday"] },
@@ -97,6 +131,7 @@ describe("areWeCovered", () => {
         ];
         expect(areWeCovered((staff), "Tuesday")).toBe(true);
     });
+
     // test case insensitive for day of the week
     test("day parameter should be case insensitive", () => {
         const staff = [
@@ -107,4 +142,13 @@ describe("areWeCovered", () => {
         ];
         expect(areWeCovered(staff, "Tuesday")).toBe(true);
     });
+
+    test('rota should only contain days of the week ', () => {
+      expect(() => {
+          areWeCovered([{
+              name: 'stephen', rota: ['stephen', 'paul', 'sally']
+          }], 'monday').toThrow("rota should only contain days of the week");
+      })
+    })
+    
 })

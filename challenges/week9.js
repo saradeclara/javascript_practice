@@ -80,11 +80,34 @@ const createMatrix = (n, fill) => {
  * @returns {Boolean}
  */
 const areWeCovered = (staff, day) => {
+  // input type check. staff should be array, day should be a string
   if (!Array.isArray(staff)) throw new Error("staff should be an array");
   if (typeof day !== 'string') throw new Error("day should be a string");
+
+  // undefined input check.
   if (!staff) throw new Error("staff is required");
   if (!day) throw new Error("day is required");
   if (staff.length === 0) return false;
+
+  // check that day is a day of the week
+  const week = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+  if (!week.includes(day.toLowerCase())) throw new Error("day should be a day of the week [e.g. Monday, Tuesday,...]");
+
+  // check that staff is an array of objects
+  // check that each object has only 2 props, name (string) and rota (array of strings)
+  // check that rota should only contain days of the week
+  staff.forEach(employee => {
+    if (typeof employee !== 'object' && employee.constructor !== Object) throw new Error ("staff should be an array of objects")
+    if (Object.values(employee).length !== 2 || (!employee.hasOwnProperty('name')) || (!employee.hasOwnProperty('rota')))
+    throw new Error("staff not formatted correctly (every obj has 2 props, name and rota)");
+    if (typeof employee.name !== 'string' || (!Array.isArray(employee.rota))) 
+      throw new Error("name prop should be a string and rota prop should be array of strings");
+    employee.rota.forEach(rotaDay => {
+      if (typeof rotaDay !== 'string') 
+        throw new Error("name prop should be a string and rota prop should be array of strings");
+      if (!week.includes(rotaDay.toLowerCase())) throw new Error ("rota should only contain days of the week");
+    })
+  })
  
   // initialise staffCounter = 0
   // loop throught staff array 
