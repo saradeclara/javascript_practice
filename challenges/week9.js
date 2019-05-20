@@ -6,6 +6,22 @@
  */
 const sumMultiples = arr => {
   if (!arr) throw new Error("arr is required");
+  if (!Array.isArray(arr)) throw new Error("an array is required");
+  arr.forEach(n => {
+    if (typeof n !== 'number') {
+      throw new Error("an array of numbers is required");
+    }
+  })
+  // loop through the array
+  // if the number / 3 or 5 (%), add to a total
+  // return total
+  let total = 0;
+  arr.forEach(n => {
+    if (n % 5 === 0 || n % 3 === 0 ) {
+      total += n;
+    }
+  });
+  return total;
 };
 
 /**
