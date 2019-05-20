@@ -31,6 +31,21 @@ const sumMultiples = arr => {
  */
 const isValidDNA = str => {
   if (!str) throw new Error("str is required");
+  if (typeof str !== 'string') throw new Error("param should be a string");
+
+  const allowedChars = ['C', 'G', 'T', 'A'];
+
+  let valid = true;
+  str = str.split("");
+  
+  str.forEach(char => {
+    if (!allowedChars.includes(char.toUpperCase())) {
+      valid = false;
+      return valid;
+    }
+  })
+  
+  return valid;
 };
 
 /**

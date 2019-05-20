@@ -1,6 +1,7 @@
 const {
     sumMultiples,
-    areWeCovered
+    areWeCovered,
+    isValidDNA
 } = require("../challenges/week9");
 
 describe("sumMultiples", () => {
@@ -151,4 +152,46 @@ describe("areWeCovered", () => {
       })
     })
     
+})
+
+describe('isValidDNA', () => {
+//   undefined input
+test('undefined input.', () => {
+  expect(() => {
+      isValidDNA()
+  }).toThrow("str is required");
+});
+
+// type check (should be string)
+test('param should be a string', () => {
+  expect(() => {
+      isValidDNA(123)
+  }).toThrow("param should be a string");
+  expect(() => {
+      isValidDNA(true)
+  }).toThrow("param should be a string");
+  expect(() => {
+    isValidDNA(['D', 'C', 'T', 'A'])
+}).toThrow("param should be a string");
+})
+
+// check those strings pass (case insensitive)
+test("those are valid strings", () => {
+    expect(isValidDNA('CGTACAGT')).toBe(true);
+    expect(isValidDNA('ACTATTTGCAC')).toBe(true);
+    expect(isValidDNA('GATCAACT')).toBe(true);
+    expect(isValidDNA('catatagcagact')).toBe(true);
+    expect(isValidDNA('actacaaagtt')).toBe(true);
+    expect(isValidDNA('gcagtagcagg')).toBe(true);
+})
+// check those strings do not pass
+test('those are not valid strings ', () => {
+  expect(isValidDNA('ASDCDSASDF')).toBe(false);
+  expect(isValidDNA('ASDCASDGGASDEW')).toBe(false);
+  expect(isValidDNA('ASDFSDF')).toBe(false);
+  expect(isValidDNA('ASDFASDGFGD')).toBe(false);
+  expect(isValidDNA('VDFHERHDGF')).toBe(false);
+  expect(isValidDNA('GFDG')).toBe(false);
+})
+
 })
