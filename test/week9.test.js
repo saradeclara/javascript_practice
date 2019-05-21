@@ -3,7 +3,8 @@ const {
     areWeCovered,
     isValidDNA,
     getComplementaryDNA,
-    isItPrime
+    isItPrime,
+    createMatrix
 } = require("../challenges/week9");
 
 describe("sumMultiples", () => {
@@ -22,7 +23,7 @@ describe("sumMultiples", () => {
             sumMultiples(5);
         }).toThrow("an array is required");
         expect(() => {
-            sumMultiples(['sara', 'hello']);
+            sumMultiples(["sara", "hello"]);
         }).toThrow("an array of numbers is required");
     })
     // array with 1, 3, 5 to equal 8
@@ -60,40 +61,40 @@ describe("areWeCovered", () => {
     // illegal input, staff should be array of objects, day should be a string
     test("check that staff is an array of objects and that day is a string", () => {
         const staff = [
-            { name: 'stephen', rota: ['tuesday', 'monday'] }
+            { name: "stephen", rota: ["tuesday", "monday"] }
         ]
         expect(() => { areWeCovered(123456, "Monday") }).toThrow("staff should be an array");
-        expect(() => { areWeCovered('paul', "Monday") }).toThrow("staff should be an array");
+        expect(() => { areWeCovered("paul", "Monday") }).toThrow("staff should be an array");
         expect(() => { areWeCovered(true, "Monday") }).toThrow("staff should be an array");
         expect(() => { areWeCovered(staff, 123) }).toThrow("day should be a string");
         expect(() => { areWeCovered(staff, false) }).toThrow("day should be a string");
-        expect(() => { areWeCovered(staff, ['monday']) }).toThrow("day should be a string");
+        expect(() => { areWeCovered(staff, ["monday"]) }).toThrow("day should be a string");
     })
 
     // check day is a string containing a day of the week
-    test('day should be a day of the week', () => {
+    test("day should be a day of the week", () => {
         const staff = [
             { name: "stephen", rota: ["monday", "tuesday"] },
         ];
-        expect(() => { areWeCovered(staff, 'stephen') }).toThrow("day should be a day of the week [e.g. Monday, Tuesday,...]")
+        expect(() => { areWeCovered(staff, "stephen") }).toThrow("day should be a day of the week [e.g. Monday, Tuesday,...]")
     });
 
     // check staff is array of objects
-    test('staff should be an array of objects', () => {
+    test("staff should be an array of objects", () => {
         expect(() => {
-            areWeCovered(['paul', 'stephen', 'sally'], 'monday')
+            areWeCovered(["paul", "stephen", "sally"], "monday")
         }).toThrow("staff should be an array of objects");
     })
 
     // check staff is array of objects, each object has two properties (name and rota)
-    test('check staff array is formatted correctly', () => {
+    test("check staff array is formatted correctly", () => {
         expect(() => {
-            areWeCovered([{ fullName: 'paul', schedule: ['monday', 'tuesday'] }], 'monday')
+            areWeCovered([{ fullName: "paul", schedule: ["monday", "tuesday"] }], "monday")
         }).toThrow("staff not formatted correctly (every obj has 2 props, name and rota)");
     })
 
     // check the name property is a string and rota property is an array of strings
-    test('name prop should be a string and rota prop should be array of strings', () => {
+    test("name prop should be a string and rota prop should be array of strings", () => {
         expect(() => {
             areWeCovered([
                 { name: true, rota: false }
@@ -146,26 +147,26 @@ describe("areWeCovered", () => {
         expect(areWeCovered(staff, "Tuesday")).toBe(true);
     });
 
-    test('rota should only contain days of the week ', () => {
+    test("rota should only contain days of the week ", () => {
         expect(() => {
             areWeCovered([{
-                name: 'stephen', rota: ['stephen', 'paul', 'sally']
-            }], 'monday').toThrow("rota should only contain days of the week");
+                name: "stephen", rota: ["stephen", "paul", "sally"]
+            }], "monday").toThrow("rota should only contain days of the week");
         })
     })
 
 });
 
-describe('isValidDNA', () => {
+describe("isValidDNA", () => {
     //   undefined input
-    test('undefined input.', () => {
+    test("undefined input.", () => {
         expect(() => {
             isValidDNA()
         }).toThrow("str is required");
     });
 
     // type check (should be string)
-    test('param should be a string', () => {
+    test("param should be a string", () => {
         expect(() => {
             isValidDNA(123)
         }).toThrow("param should be a string");
@@ -173,41 +174,41 @@ describe('isValidDNA', () => {
             isValidDNA(true)
         }).toThrow("param should be a string");
         expect(() => {
-            isValidDNA(['D', 'C', 'T', 'A'])
+            isValidDNA(["D", "C", "T", "A"])
         }).toThrow("param should be a string");
     })
 
     // check those strings pass (case insensitive)
     test("those are valid strings", () => {
-        expect(isValidDNA('CGTACAGT')).toBe(true);
-        expect(isValidDNA('ACTATTTGCAC')).toBe(true);
-        expect(isValidDNA('GATCAACT')).toBe(true);
-        expect(isValidDNA('catatagcagact')).toBe(true);
-        expect(isValidDNA('actacaaagtt')).toBe(true);
-        expect(isValidDNA('gcagtagcagg')).toBe(true);
+        expect(isValidDNA("CGTACAGT")).toBe(true);
+        expect(isValidDNA("ACTATTTGCAC")).toBe(true);
+        expect(isValidDNA("GATCAACT")).toBe(true);
+        expect(isValidDNA("catatagcagact")).toBe(true);
+        expect(isValidDNA("actacaaagtt")).toBe(true);
+        expect(isValidDNA("gcagtagcagg")).toBe(true);
     })
     // check those strings do not pass
-    test('those are not valid strings ', () => {
-        expect(isValidDNA('ASDCDSASDF')).toBe(false);
-        expect(isValidDNA('ASDCASDGGASDEW')).toBe(false);
-        expect(isValidDNA('ASDFSDF')).toBe(false);
-        expect(isValidDNA('ASDFASDGFGD')).toBe(false);
-        expect(isValidDNA('VDFHERHDGF')).toBe(false);
-        expect(isValidDNA('GFDG')).toBe(false);
+    test("those are not valid strings ", () => {
+        expect(isValidDNA("ASDCDSASDF")).toBe(false);
+        expect(isValidDNA("ASDCASDGGASDEW")).toBe(false);
+        expect(isValidDNA("ASDFSDF")).toBe(false);
+        expect(isValidDNA("ASDFASDGFGD")).toBe(false);
+        expect(isValidDNA("VDFHERHDGF")).toBe(false);
+        expect(isValidDNA("GFDG")).toBe(false);
     })
 
 });
 
-describe('getComplementaryDNA', () => {
+describe("getComplementaryDNA", () => {
     // undefined input
-    test('undefined input. error.', () => {
+    test("undefined input. error.", () => {
         expect(() => {
             getComplementaryDNA()
         }).toThrow("str is required");
     });
 
     // type input check (string)
-    test('param should be a string', () => {
+    test("param should be a string", () => {
         expect(() => {
             getComplementaryDNA(123)
         }).toThrow("param should be a string");
@@ -220,39 +221,39 @@ describe('getComplementaryDNA', () => {
     });
 
     // not valid string. throws error
-    test('string should be a valid DNA string', () => {
+    test("string should be a valid DNA string", () => {
         expect(() => {
-            getComplementaryDNA('sara')
+            getComplementaryDNA("sara")
         }).toThrow("string should be a valid DNA string")
     });
 
     // strings that work
-    test('these are valid DNA strings', () => {
-        expect((getComplementaryDNA('ACA'))).toBe('TGT');
-        expect((getComplementaryDNA('TAGC'))).toBe('ATCG');
-        expect((getComplementaryDNA('GATGAC'))).toBe('CTACTG');
-        expect((getComplementaryDNA('GGGG'))).toBe('CCCC');
-        expect((getComplementaryDNA('GTACGTCGG'))).toBe('CATGCAGCC');
+    test("these are valid DNA strings", () => {
+        expect((getComplementaryDNA("ACA"))).toBe("TGT");
+        expect((getComplementaryDNA("TAGC"))).toBe("ATCG");
+        expect((getComplementaryDNA("GATGAC"))).toBe("CTACTG");
+        expect((getComplementaryDNA("GGGG"))).toBe("CCCC");
+        expect((getComplementaryDNA("GTACGTCGG"))).toBe("CATGCAGCC");
     });
 
     // case insensitive
-    test('input should be case insensitive, output is always uppercase', () => {
-        expect(getComplementaryDNA('aca')).toBe('TGT');
-        expect(getComplementaryDNA('tagc')).toBe('ATCG');
-        expect((getComplementaryDNA('gatgac'))).toBe('CTACTG');
-        expect((getComplementaryDNA('gggg'))).toBe('CCCC');
-        expect((getComplementaryDNA('gtacgtcgg'))).toBe('CATGCAGCC');
+    test("input should be case insensitive, output is always uppercase", () => {
+        expect(getComplementaryDNA("aca")).toBe("TGT");
+        expect(getComplementaryDNA("tagc")).toBe("ATCG");
+        expect((getComplementaryDNA("gatgac"))).toBe("CTACTG");
+        expect((getComplementaryDNA("gggg"))).toBe("CCCC");
+        expect((getComplementaryDNA("gtacgtcgg"))).toBe("CATGCAGCC");
     });
 });
 
-describe.only('isItPrime', () => {
+describe("isItPrime", () => {
     // undefined input
     test("undefined input. error.", () => {
         expect(() => {
             isItPrime()
         }).toThrow("n is required")
     })
-    
+
     // param should be a number only
     test("param should be a number", () => {
         expect(() => {
@@ -262,15 +263,15 @@ describe.only('isItPrime', () => {
             isItPrime(true)
         }).toThrow("param should be a number");
         expect(() => {
-            isItPrime([1,2,3])
+            isItPrime([1, 2, 3])
         }).toThrow("param should be a number");
         expect(() => {
-            isItPrime({ value: 23, id: 0})
+            isItPrime({ value: 23, id: 0 })
         }).toThrow("param should be a number");
     });
-    
+
     // check algorithm
-    test('should return true for prime nums and false for non-prime nums', () => {
+    test("should return true for prime nums and false for non-prime nums", () => {
         expect((isItPrime(97))).toBe(true);
         expect((isItPrime(2))).toBe(true);
         expect((isItPrime(7))).toBe(true);
@@ -283,7 +284,7 @@ describe.only('isItPrime', () => {
     })
 
     // test big prime nums
-    test('big prime nums', () => {
+    test("big prime nums", () => {
         expect(isItPrime(1051)).toBe(true);
         expect(isItPrime(2503)).toBe(true);
         expect(isItPrime(1367)).toBe(true);
@@ -293,5 +294,68 @@ describe.only('isItPrime', () => {
         expect(isItPrime(9227)).toBe(true);
         expect(isItPrime(10789)).toBe(true);
     })
+})
+
+describe("createMatrix", () => {
+    // undefined input
+    test("undefined input.", () => {
+        expect(() => {
+            createMatrix()
+        }).toThrow("n is required");
+        expect(() => {
+            createMatrix(2)
+        }).toThrow("fill is required");
+    });
+
+    // n should be a number
+    test("n should be a number", () => {
+        expect(() => {
+            createMatrix("two", "test")
+        }).toThrow("n should be a number");
+        expect(() => {
+            createMatrix("test", 2)
+        }).toThrow("n should be a number");
+        expect(() => {
+            createMatrix([2], "test")
+        }).toThrow("n should be a number");
+    })
+
+    // check algorithm with strings, nums, arrays, objects
+    test("check algorithm with string", () => {
+        const result = [
+            ["test", "test"],
+            ["test", "test"]
+        ];
+        expect(createMatrix(2, "test")).toEqual(result);
+    });
+    test("check algorithm with nums", () => {
+        const result = [
+            [23, 23, 23],
+            [23, 23, 23],
+            [23, 23, 23]
+        ];
+        expect(createMatrix(3, 23)).toEqual(result);
+    });
+    test("check algorithm with arrays", () => {
+        const result = [
+            [[true], [true], [true], [true]],
+            [[true], [true], [true], [true]],
+            [[true], [true], [true], [true]],
+            [[true], [true], [true], [true]]
+        ];
+        expect(createMatrix(4, [true])).toEqual(result);
+    });
+    test("check algorithm with object", () => {
+        const result = [
+            [{ name: "sara", age: 30 }]
+        ];
+        expect(createMatrix(1, { name: "sara", age: 30 })).toEqual(result);
+    });
+
+    // when n = 0, function returns []
+    test("when n = 0, function returns []", () => {
+        expect(createMatrix(0, ["test"])).toEqual([]);
+    });
+
 })
 

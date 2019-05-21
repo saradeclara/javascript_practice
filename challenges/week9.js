@@ -8,7 +8,7 @@ const sumMultiples = arr => {
   if (!arr) throw new Error("arr is required");
   if (!Array.isArray(arr)) throw new Error("an array is required");
   arr.forEach(n => {
-    if (typeof n !== 'number') {
+    if (typeof n !== "number") {
       throw new Error("an array of numbers is required");
     }
   })
@@ -17,7 +17,7 @@ const sumMultiples = arr => {
   // return total
   let total = 0;
   arr.forEach(n => {
-    if (n % 5 === 0 || n % 3 === 0 ) {
+    if (n % 5 === 0 || n % 3 === 0) {
       total += n;
     }
   });
@@ -31,13 +31,18 @@ const sumMultiples = arr => {
  */
 const isValidDNA = str => {
   if (!str) throw new Error("str is required");
-  if (typeof str !== 'string') throw new Error("param should be a string");
+  if (typeof str !== "string") throw new Error("param should be a string");
 
-  const allowedChars = ['C', 'G', 'T', 'A'];
+  // create array of allowed characters
+  // convert string into array
+  // loop through array and check if character is included in allowedChars.
+  // if it is not, break out of loop and return false
+
+  const allowedChars = ["C", "G", "T", "A"];
 
   let valid = true;
   str = str.split("");
-  
+
   for (let i = 0; i < str.length; i++) {
     if (!allowedChars.includes(str[i].toUpperCase())) {
       valid = false;
@@ -55,23 +60,27 @@ const isValidDNA = str => {
  */
 const getComplementaryDNA = str => {
   if (!str) throw new Error("str is required");
-  if (typeof str !== 'string') throw new Error("param should be a string");
+  if (typeof str !== "string") throw new Error("param should be a string");
 
-    let complementaryDNA = str.toLowerCase().split("").map(char => {
-       switch(char) {
-         case 'a':
-           return 't';
-         case 'g':
-           return 'c';
-         case 'c':
-           return 'g';
-         case 't':
-           return 'a';
-         default: 
-           throw new Error('string should be a valid DNA string')
-       }
-    })
-    return complementaryDNA.join('').toUpperCase();
+  // convert str to array (lowercase)
+  // create new array with map (use switch case for char replacement)
+  // return joined-up string
+
+  let complementaryDNA = str.toLowerCase().split("").map(char => {
+    switch (char) {
+      case "a":
+        return "t";
+      case "g":
+        return "c";
+      case "c":
+        return "g";
+      case "t":
+        return "a";
+      default:
+        throw new Error("string should be a valid DNA string")
+    }
+  })
+  return complementaryDNA.join("").toUpperCase();
 };
 
 /**
@@ -81,13 +90,19 @@ const getComplementaryDNA = str => {
  */
 const isItPrime = n => {
   if (!n) throw new Error("n is required");
-  if (typeof n !== 'number') throw new Error("param should be a number");
-  if ( n < 0 || n === 1 ) {
+  if (typeof n !== "number") throw new Error("param should be a number");
+
+  // if n is negative or 1, cannot be prime
+  // if n is 2, it is prime
+  // if n is divisible by a number that is not 1 and not itself
+  // isNumPrime turns false and gets returned
+
+  if (n < 0 || n === 1) {
     return false;
-  } else if ( n === 2 ) {
+  } else if (n === 2) {
     return true;
   }
-  
+
   let isNumPrime = true;
   for (let i = 2; i < n; i++) {
     if (n % i === 0) {
@@ -110,8 +125,25 @@ const isItPrime = n => {
  * @returns {Array}
  */
 const createMatrix = (n, fill) => {
-  if (!n) throw new Error("n is required");
+  if (typeof n === "undefined") throw new Error("n is required");
   if (!fill) throw new Error("fill is required");
+  if (typeof n !== "number") throw new Error("n should be a number");
+
+  // create subarray by looping n times and pushing fill
+  // create main array by looping n times and pushing subarray
+  if (n === 0) {
+    return []
+  } else {
+    let newSubArray = [];
+    for (let i = 0; i < n; i++) {
+      newSubArray.push(fill);
+    }
+    let newMainArray = [];
+    for (let j = 0; j < n; j++) {
+      newMainArray.push(newSubArray);
+    }
+    return newMainArray;
+  }
 };
 
 /**
@@ -129,7 +161,7 @@ const createMatrix = (n, fill) => {
 const areWeCovered = (staff, day) => {
   // input type check. staff should be array, day should be a string
   if (!Array.isArray(staff)) throw new Error("staff should be an array");
-  if (typeof day !== 'string') throw new Error("day should be a string");
+  if (typeof day !== "string") throw new Error("day should be a string");
 
   // undefined input check.
   if (!staff) throw new Error("staff is required");
@@ -137,25 +169,25 @@ const areWeCovered = (staff, day) => {
   if (staff.length === 0) return false;
 
   // check that day is a day of the week
-  const week = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+  const week = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
   if (!week.includes(day.toLowerCase())) throw new Error("day should be a day of the week [e.g. Monday, Tuesday,...]");
 
   // check that staff is an array of objects
   // check that each object has only 2 props, name (string) and rota (array of strings)
   // check that rota should only contain days of the week
   staff.forEach(employee => {
-    if (typeof employee !== 'object' && employee.constructor !== Object) throw new Error ("staff should be an array of objects")
-    if (Object.values(employee).length !== 2 || (!employee.hasOwnProperty('name')) || (!employee.hasOwnProperty('rota')))
-    throw new Error("staff not formatted correctly (every obj has 2 props, name and rota)");
-    if (typeof employee.name !== 'string' || (!Array.isArray(employee.rota))) 
+    if (typeof employee !== "object" && employee.constructor !== Object) throw new Error("staff should be an array of objects")
+    if (Object.values(employee).length !== 2 || (!employee.hasOwnProperty("name")) || (!employee.hasOwnProperty("rota")))
+      throw new Error("staff not formatted correctly (every obj has 2 props, name and rota)");
+    if (typeof employee.name !== "string" || (!Array.isArray(employee.rota)))
       throw new Error("name prop should be a string and rota prop should be array of strings");
     employee.rota.forEach(rotaDay => {
-      if (typeof rotaDay !== 'string') 
+      if (typeof rotaDay !== "string")
         throw new Error("name prop should be a string and rota prop should be array of strings");
-      if (!week.includes(rotaDay.toLowerCase())) throw new Error ("rota should only contain days of the week");
+      if (!week.includes(rotaDay.toLowerCase())) throw new Error("rota should only contain days of the week");
     })
   })
- 
+
   // initialise staffCounter = 0
   // loop throught staff array 
   // loop through rota of each employee
