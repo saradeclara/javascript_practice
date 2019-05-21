@@ -38,13 +38,13 @@ const isValidDNA = str => {
   let valid = true;
   str = str.split("");
   
-  str.forEach(char => {
-    if (!allowedChars.includes(char.toUpperCase())) {
+  for (let i = 0; i < str.length; i++) {
+    if (!allowedChars.includes(str[i].toUpperCase())) {
       valid = false;
-      return valid;
+      break;
     }
-  })
-  
+  }
+    
   return valid;
 };
 
