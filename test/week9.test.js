@@ -2,7 +2,8 @@ const {
     sumMultiples,
     areWeCovered,
     isValidDNA,
-    getComplementaryDNA
+    getComplementaryDNA,
+    isItPrime
 } = require("../challenges/week9");
 
 describe("sumMultiples", () => {
@@ -197,7 +198,7 @@ describe('isValidDNA', () => {
 
 });
 
-describe.only('getComplementaryDNA', () => {
+describe('getComplementaryDNA', () => {
     // undefined input
     test('undefined input. error.', () => {
         expect(() => {
@@ -242,5 +243,55 @@ describe.only('getComplementaryDNA', () => {
         expect((getComplementaryDNA('gggg'))).toBe('CCCC');
         expect((getComplementaryDNA('gtacgtcgg'))).toBe('CATGCAGCC');
     });
+});
 
+describe.only('isItPrime', () => {
+    // undefined input
+    test("undefined input. error.", () => {
+        expect(() => {
+            isItPrime()
+        }).toThrow("n is required")
+    })
+    
+    // param should be a number only
+    test("param should be a number", () => {
+        expect(() => {
+            isItPrime("three")
+        }).toThrow("param should be a number");
+        expect(() => {
+            isItPrime(true)
+        }).toThrow("param should be a number");
+        expect(() => {
+            isItPrime([1,2,3])
+        }).toThrow("param should be a number");
+        expect(() => {
+            isItPrime({ value: 23, id: 0})
+        }).toThrow("param should be a number");
+    });
+    
+    // check algorithm
+    test('should return true for prime nums and false for non-prime nums', () => {
+        expect((isItPrime(97))).toBe(true);
+        expect((isItPrime(2))).toBe(true);
+        expect((isItPrime(7))).toBe(true);
+        expect((isItPrime(13))).toBe(true);
+        expect((isItPrime(4))).toBe(false);
+        expect((isItPrime(12))).toBe(false);
+        expect((isItPrime(100))).toBe(false);
+        expect((isItPrime(1))).toBe(false);
+        expect((isItPrime(-5))).toBe(false);
+    })
+
+    // test big prime nums
+    test('big prime nums', () => {
+        expect(isItPrime(1051)).toBe(true);
+        expect(isItPrime(2503)).toBe(true);
+        expect(isItPrime(1367)).toBe(true);
+        expect(isItPrime(5309)).toBe(true);
+        expect(isItPrime(5881)).toBe(true);
+        expect(isItPrime(7243)).toBe(true);
+        expect(isItPrime(9227)).toBe(true);
+        expect(isItPrime(10789)).toBe(true);
+    })
 })
+
