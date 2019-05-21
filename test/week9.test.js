@@ -1,7 +1,8 @@
 const {
     sumMultiples,
     areWeCovered,
-    isValidDNA
+    isValidDNA,
+    getComplementaryDNA
 } = require("../challenges/week9");
 
 describe("sumMultiples", () => {
@@ -41,7 +42,7 @@ describe("sumMultiples", () => {
     })
     // wrong type input (should be array)
 
-})
+});
 
 describe("areWeCovered", () => {
     // empty array
@@ -58,7 +59,7 @@ describe("areWeCovered", () => {
     // illegal input, staff should be array of objects, day should be a string
     test("check that staff is an array of objects and that day is a string", () => {
         const staff = [
-            { name: 'stephen', rota: ['tuesday', 'monday']}
+            { name: 'stephen', rota: ['tuesday', 'monday'] }
         ]
         expect(() => { areWeCovered(123456, "Monday") }).toThrow("staff should be an array");
         expect(() => { areWeCovered('paul', "Monday") }).toThrow("staff should be an array");
@@ -73,37 +74,37 @@ describe("areWeCovered", () => {
         const staff = [
             { name: "stephen", rota: ["monday", "tuesday"] },
         ];
-      expect(() => { areWeCovered(staff, 'stephen') }).toThrow("day should be a day of the week [e.g. Monday, Tuesday,...]")
+        expect(() => { areWeCovered(staff, 'stephen') }).toThrow("day should be a day of the week [e.g. Monday, Tuesday,...]")
     });
 
     // check staff is array of objects
     test('staff should be an array of objects', () => {
-      expect(() => {
-          areWeCovered(['paul', 'stephen', 'sally'], 'monday')
-      }).toThrow("staff should be an array of objects");
+        expect(() => {
+            areWeCovered(['paul', 'stephen', 'sally'], 'monday')
+        }).toThrow("staff should be an array of objects");
     })
-    
+
     // check staff is array of objects, each object has two properties (name and rota)
     test('check staff array is formatted correctly', () => {
         expect(() => {
-            areWeCovered([{fullName: 'paul', schedule: ['monday', 'tuesday']}], 'monday')
+            areWeCovered([{ fullName: 'paul', schedule: ['monday', 'tuesday'] }], 'monday')
         }).toThrow("staff not formatted correctly (every obj has 2 props, name and rota)");
     })
 
     // check the name property is a string and rota property is an array of strings
     test('name prop should be a string and rota prop should be array of strings', () => {
-      expect(() => {
-          areWeCovered([
-              { name: true, rota: false }
-          ]).toThrow("name prop should be a string and rota prop should be array of strings")
-      })
+        expect(() => {
+            areWeCovered([
+                { name: true, rota: false }
+            ]).toThrow("name prop should be a string and rota prop should be array of strings")
+        })
     })
-    
+
     // check it returns false if less than 3 available staff
     test("returns false if there are less than 3 scheduled staff on a day", () => {
         const staff = [
             { name: "stephen", rota: ["monday", "tuesday"] },
-            { name: "paul", rota: ["monday", "tuesday"] }, 
+            { name: "paul", rota: ["monday", "tuesday"] },
             { name: "sally", rota: ["monday", "tuesday"] },
             { name: "jess", rota: ["monday", "tuesday"] }
         ];
@@ -115,7 +116,7 @@ describe("areWeCovered", () => {
     test("returns true if there is available staff (3 or more)", () => {
         const staff = [
             { name: "stephen", rota: ["monday", "tuesday"] },
-            { name: "paul", rota: ["monday", "tuesday"] }, 
+            { name: "paul", rota: ["monday", "tuesday"] },
             { name: "sally", rota: ["monday", "tuesday"] },
             { name: "jess", rota: ["monday", "tuesday"] }
         ];
@@ -126,7 +127,7 @@ describe("areWeCovered", () => {
     test("returns true if there is available staff (3 or more)", () => {
         const staff = [
             { name: "stephen", rota: ["monday", "tuesday"] },
-            { name: "paul", rota: ["monday", "tuesday"] }, 
+            { name: "paul", rota: ["monday", "tuesday"] },
             { name: "sally", rota: ["wednesday", "tuesday"] },
             { name: "jess", rota: ["saturday", "friday"] }
         ];
@@ -137,7 +138,7 @@ describe("areWeCovered", () => {
     test("day parameter should be case insensitive", () => {
         const staff = [
             { name: "stephen", rota: ["monday", "tuesday"] },
-            { name: "paul", rota: ["monday", "tuesday"] }, 
+            { name: "paul", rota: ["monday", "tuesday"] },
             { name: "sally", rota: ["monday", "tuesday"] },
             { name: "jess", rota: ["monday", "tuesday"] }
         ];
@@ -145,53 +146,101 @@ describe("areWeCovered", () => {
     });
 
     test('rota should only contain days of the week ', () => {
-      expect(() => {
-          areWeCovered([{
-              name: 'stephen', rota: ['stephen', 'paul', 'sally']
-          }], 'monday').toThrow("rota should only contain days of the week");
-      })
+        expect(() => {
+            areWeCovered([{
+                name: 'stephen', rota: ['stephen', 'paul', 'sally']
+            }], 'monday').toThrow("rota should only contain days of the week");
+        })
     })
-    
-})
 
-describe('isValidDNA', () => {
-//   undefined input
-test('undefined input.', () => {
-  expect(() => {
-      isValidDNA()
-  }).toThrow("str is required");
 });
 
-// type check (should be string)
-test('param should be a string', () => {
-  expect(() => {
-      isValidDNA(123)
-  }).toThrow("param should be a string");
-  expect(() => {
-      isValidDNA(true)
-  }).toThrow("param should be a string");
-  expect(() => {
-    isValidDNA(['D', 'C', 'T', 'A'])
-}).toThrow("param should be a string");
-})
+describe('isValidDNA', () => {
+    //   undefined input
+    test('undefined input.', () => {
+        expect(() => {
+            isValidDNA()
+        }).toThrow("str is required");
+    });
 
-// check those strings pass (case insensitive)
-test("those are valid strings", () => {
-    expect(isValidDNA('CGTACAGT')).toBe(true);
-    expect(isValidDNA('ACTATTTGCAC')).toBe(true);
-    expect(isValidDNA('GATCAACT')).toBe(true);
-    expect(isValidDNA('catatagcagact')).toBe(true);
-    expect(isValidDNA('actacaaagtt')).toBe(true);
-    expect(isValidDNA('gcagtagcagg')).toBe(true);
-})
-// check those strings do not pass
-test('those are not valid strings ', () => {
-  expect(isValidDNA('ASDCDSASDF')).toBe(false);
-  expect(isValidDNA('ASDCASDGGASDEW')).toBe(false);
-  expect(isValidDNA('ASDFSDF')).toBe(false);
-  expect(isValidDNA('ASDFASDGFGD')).toBe(false);
-  expect(isValidDNA('VDFHERHDGF')).toBe(false);
-  expect(isValidDNA('GFDG')).toBe(false);
-})
+    // type check (should be string)
+    test('param should be a string', () => {
+        expect(() => {
+            isValidDNA(123)
+        }).toThrow("param should be a string");
+        expect(() => {
+            isValidDNA(true)
+        }).toThrow("param should be a string");
+        expect(() => {
+            isValidDNA(['D', 'C', 'T', 'A'])
+        }).toThrow("param should be a string");
+    })
+
+    // check those strings pass (case insensitive)
+    test("those are valid strings", () => {
+        expect(isValidDNA('CGTACAGT')).toBe(true);
+        expect(isValidDNA('ACTATTTGCAC')).toBe(true);
+        expect(isValidDNA('GATCAACT')).toBe(true);
+        expect(isValidDNA('catatagcagact')).toBe(true);
+        expect(isValidDNA('actacaaagtt')).toBe(true);
+        expect(isValidDNA('gcagtagcagg')).toBe(true);
+    })
+    // check those strings do not pass
+    test('those are not valid strings ', () => {
+        expect(isValidDNA('ASDCDSASDF')).toBe(false);
+        expect(isValidDNA('ASDCASDGGASDEW')).toBe(false);
+        expect(isValidDNA('ASDFSDF')).toBe(false);
+        expect(isValidDNA('ASDFASDGFGD')).toBe(false);
+        expect(isValidDNA('VDFHERHDGF')).toBe(false);
+        expect(isValidDNA('GFDG')).toBe(false);
+    })
+
+});
+
+describe.only('getComplementaryDNA', () => {
+    // undefined input
+    test('undefined input. error.', () => {
+        expect(() => {
+            getComplementaryDNA()
+        }).toThrow("str is required");
+    });
+
+    // type input check (string)
+    test('param should be a string', () => {
+        expect(() => {
+            getComplementaryDNA(123)
+        }).toThrow("param should be a string");
+        expect(() => {
+            getComplementaryDNA(true)
+        }).toThrow("param should be a string");
+        expect(() => {
+            getComplementaryDNA([123])
+        }).toThrow("param should be a string");
+    });
+
+    // not valid string. throws error
+    test('string should be a valid DNA string', () => {
+        expect(() => {
+            getComplementaryDNA('sara')
+        }).toThrow("string should be a valid DNA string")
+    });
+
+    // strings that work
+    test('these are valid DNA strings', () => {
+        expect((getComplementaryDNA('ACA'))).toBe('TGT');
+        expect((getComplementaryDNA('TAGC'))).toBe('ATCG');
+        expect((getComplementaryDNA('GATGAC'))).toBe('CTACTG');
+        expect((getComplementaryDNA('GGGG'))).toBe('CCCC');
+        expect((getComplementaryDNA('GTACGTCGG'))).toBe('CATGCAGCC');
+    });
+
+    // case insensitive
+    test('input should be case insensitive, output is always uppercase', () => {
+        expect(getComplementaryDNA('aca')).toBe('TGT');
+        expect(getComplementaryDNA('tagc')).toBe('ATCG');
+        expect((getComplementaryDNA('gatgac'))).toBe('CTACTG');
+        expect((getComplementaryDNA('gggg'))).toBe('CCCC');
+        expect((getComplementaryDNA('gtacgtcgg'))).toBe('CATGCAGCC');
+    });
 
 })
