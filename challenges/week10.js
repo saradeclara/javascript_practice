@@ -4,6 +4,15 @@
  */
 const sumDigits = n => {
   if (n === undefined) throw new Error("n is required");
+  if (typeof n !== 'number' || Number.isInteger(n) === false) throw new Error("n should be an integer");
+  
+  const getSum = (total, num) => {
+    return total + num
+  };
+  let nArray = n.toString().split("").map(n => {
+    return parseInt(n, 10);
+  });
+  return nArray.reduce(getSum);
 };
 
 /**

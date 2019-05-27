@@ -4,7 +4,7 @@
   "description": "A repository of JavaScript challenges for you to work on throughout the course",
   "main": "index.js",
   "scripts": {
-    "test": "jest test/week9.test.js",
+    "test": "jest test/week10.test.js",
     "eslint": "eslint ./"
   },
   "repository": {
