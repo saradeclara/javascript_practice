@@ -4,8 +4,8 @@
  */
 const sumDigits = n => {
   if (n === undefined) throw new Error("n is required");
-  if (typeof n !== 'number' || Number.isInteger(n) === false) throw new Error("n should be an integer");
-  
+  if (typeof n !== "number" || Number.isInteger(n) === false) throw new Error("n should be an integer");
+
   const getSum = (total, num) => {
     return total + num
   };
@@ -23,9 +23,28 @@ const sumDigits = n => {
  * @param {Number} end
  * @param {Number} step
  */
-const createRange = (start, end, step) => {
+const createRange = (start, end, step = 1) => {
   if (start === undefined) throw new Error("start is required");
   if (end === undefined) throw new Error("end is required");
+  if (typeof start !== "number") throw new Error("start should be a number");
+  if (typeof end !== "number") throw new Error("end should be a number");
+  if (typeof step !== "number") throw new Error("step should be a number");
+
+  let rangeArray = [];
+  rangeArray[0] = start;
+  let currentValue = start;
+  if (start < end) {
+    for (let i = start; i < end; i += step) {
+      currentValue += step;
+      rangeArray.push(currentValue);
+    }
+  } else if (end < start) {
+    for (let i = start; i > end; i += step) {
+      currentValue += step;
+      rangeArray.push(currentValue);
+    }
+  }
+  return rangeArray;
 };
 
 /**
