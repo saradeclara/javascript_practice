@@ -1,7 +1,8 @@
 const { sumDigits,
     createRange,
     findWinner,
-    getScreentimeAlertList } = require("../challenges/week10");
+    getScreentimeAlertList,
+    hexToRGB } = require("../challenges/week10");
 
 describe("sumDigits", () => {
     // undefined input
@@ -404,5 +405,50 @@ describe('getScreentimeAlertList', () => {
         expect(
             getScreentimeAlertList(users10, '2019-03-01')
         ).toEqual([]);
+    });
+})
+
+describe('hexToRGB', () => {
+    // undefined input
+    test('should throw error if input is undefined', () => {
+        expect(() => {
+            hexToRGB()
+        }).toThrow("hexStr is required")
+    });
+    // check input type, has to be string
+    test('hexStr should be a string', () => {
+        expect(() => {
+            hexToRGB(['#ff0000'])
+        }).toThrow("hexStr should be a string");
+        expect(() => {
+            hexToRGB(true)
+        }).toThrow("hexStr should be a string");
+    });
+    // code has to start with # and has to have 6 or 3 digits
+    test('input should be an hex color code', () => {
+        expect(() => {
+            hexToRGB('asd')
+        }).toThrow("input should be an hex color code")
+    });
+    // 6-digit inputs
+    test('should return rgb code for each 6-digit inputs', () => {
+        expect(hexToRGB('#9D7D76')).toBe('rgb(157, 125, 118)');
+        expect(hexToRGB('#E53813')).toBe('rgb(229, 56, 19)');
+        expect(hexToRGB('#81DF83')).toBe('rgb(129, 223, 131)');
+    });
+    // 3-digit inputs
+    test('should return rgb code for each 3-digit inputs', () => {
+        expect(hexToRGB('#F15')).toBe('rgb(255, 17, 85)');
+        expect(hexToRGB('#E56')).toBe('rgb(238, 85, 102)');
+        expect(hexToRGB('#A87')).toBe('rgb(170, 136, 119)');
+    });
+    // lowercase inputs
+    test('should return rgb code for each 6-digit lowercase inputs', () => {
+        expect(hexToRGB('#9d7d76')).toBe('rgb(157, 125, 118)');
+        expect(hexToRGB('#e53813')).toBe('rgb(229, 56, 19)');
+        expect(hexToRGB('#81df83')).toBe('rgb(129, 223, 131)');
+        expect(hexToRGB('#f15')).toBe('rgb(255, 17, 85)');
+        expect(hexToRGB('#e56')).toBe('rgb(238, 85, 102)');
+        expect(hexToRGB('#a87')).toBe('rgb(170, 136, 119)');
     });
 })
