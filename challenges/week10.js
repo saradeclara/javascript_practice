@@ -106,8 +106,103 @@ const hexToRGB = hexStr => {
  * @param {Array} board
  */
 const findWinner = board => {
+  // undefined input
   if (board === undefined) throw new Error("board is required");
-};
+  // check board is array
+  if (!Array.isArray(board)) throw new Error("board should be an array");
+  // check every cell only contains a legal value (X, 0 or null)
+  board.forEach(row => {
+    row.forEach(cell => {
+      if (cell !== 'X' && cell !== null && cell !== 0) {
+        throw new Error("every cell should only contain X, 0 or null")
+      }
+    })
+  })
+  //   count number of rows
+  const nRows = board.length;
+  const colArr = [];
+  // count up elements for each row
+  board.forEach(row => {
+    colArr.push(row.length);
+  });
+  // checking that all rows have same number
+  // convert array to Set, to extract unique values
+  // if there is more than one value, not all rows have the same n of elements
+  const uniqColVals = [...new Set(colArr)];
+  if (uniqColVals.length !== 1)
+    throw new Error("not all rows have the same n of elements");
+  // check nRows = nCols
+  const nCols = uniqColVals[0];
+  if (nCols !== nRows)
+    throw new Error("board should be a square");
+  // check board is 3x3
+  if (nCols !== 3 && nRows !== 3)
+    throw new Error(`this board is ${nRows}x${nCols}, it should be 3x3`);
+  // create winningCombos array
+  // create temporary array
+  let winningCombos = [];
+  let tmpArray = [];
+  // push all horizontal combos
+  for (let i = 0; i < nRows; i++) {
+    for (let j = 0; j < nRows; j++) {
+      tmpArray.push(board[i][j]);
+      if (tmpArray.length === nRows) {
+        winningCombos.push(tmpArray);
+        tmpArray = [];
+      }
+    }
+  }
+  // push all vertical combos
+  for (let i = 0; i < nCols; i++) {
+    for (let j = 0; j < nCols; j++) {
+      tmpArray.push(board[j][i]);
+      if (tmpArray.length === nCols) {
+        winningCombos.push(tmpArray);
+        tmpArray = [];
+      }
+    }
+  }
+  // push all diagonal combos
+  for (let i = 0; i < nRows; i++) {
+    tmpArray.push(board[i][i]);
+    if (tmpArray.length === nRows) {
+      winningCombos.push(tmpArray);
+      tmpArray = [];
+    }
+  }
+  for (let i = 0; i < nRows; i++) {
+    tmpArray.push(board[i][Math.abs(i - 2)]);
+    if (tmpArray.length === nRows) {
+      winningCombos.push(tmpArray);
+      tmpArray = [];
+    }
+  }
+  // check if there are any winners
+  // possible outcomes:
+  let outcome;
+  const checkCombos = winningCombos.map(combo => {
+    combo = [...new Set(combo)];
+    return combo;
+  });
+  //   - player X wins
+  //   - player 0 wins
+  for (let i = 0; i < checkCombos.length; i++) {
+    if (checkCombos[i].length === 1 && checkCombos[i][0] !== null) {
+      outcome = checkCombos[i][0]
+      return outcome;
+    }
+  }
+  //   - nobody has won yet
+  //   - draw
+  const flatCombos = [].concat(...winningCombos);
+  if (flatCombos.includes(null)) {
+    outcome = 'Game in progress';
+  } else {
+    outcome = 'Draw';
+  }
+  // return outcome
+  return outcome;
+}
 
 module.exports = {
   sumDigits,
