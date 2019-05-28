@@ -1,6 +1,7 @@
 const { sumDigits,
     createRange,
-    findWinner } = require("../challenges/week10");
+    findWinner,
+    getScreentimeAlertList } = require("../challenges/week10");
 
 describe("sumDigits", () => {
     // undefined input
@@ -179,5 +180,229 @@ describe("findWinner", () => {
             ['X', 'X', 0]
         ];
         expect(findWinner(board)).toBe('Draw');
+    });
+})
+
+describe('getScreentimeAlertList', () => {
+    // undefined input
+    test('should throw error with undefined input', () => {
+        const users1 = [
+            {
+                username: "beth_1234",
+                name: "Beth Smith",
+                screenTime: [
+                    { date: "2019-05-01", usage: { twitter: 34, instagram: 22, facebook: 40 } },
+                    { date: "2019-05-02", usage: { twitter: 56, instagram: 40, facebook: 31 } },
+                    { date: "2019-05-03", usage: { twitter: 12, instagram: 15, facebook: 19 } },
+                    { date: "2019-05-04", usage: { twitter: 10, instagram: 56, facebook: 61 } },
+                ]
+            },
+            {
+                username: "sam_j_1989",
+                name: "Sam Jones",
+                screenTime: [
+                    { date: "2019-06-11", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 10 } },
+                    { date: "2019-06-13", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 16 } },
+                    { date: "2019-06-14", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 31 } },
+                ]
+            },
+        ];
+        expect(() => {
+            getScreentimeAlertList()
+        }).toThrow("users is required");
+        expect(() => {
+            getScreentimeAlertList(users1)
+        }).toThrow("date is required");
+    })
+    // users should be an array and date should be a string
+    test('users should be an array and date should be a string ', () => {
+        const users2 = [
+            {
+                username: "beth_1234",
+                name: "Beth Smith",
+                screenTime: [
+                    { date: "2019-05-01", usage: { twitter: 34, instagram: 22, facebook: 40 } },
+                    { date: "2019-05-02", usage: { twitter: 56, instagram: 40, facebook: 31 } },
+                    { date: "2019-05-03", usage: { twitter: 12, instagram: 15, facebook: 19 } },
+                    { date: "2019-05-04", usage: { twitter: 10, instagram: 56, facebook: 61 } },
+                ]
+            },
+            {
+                username: "sam_j_1989",
+                name: "Sam Jones",
+                screenTime: [
+                    { date: "2019-06-11", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 10 } },
+                    { date: "2019-06-13", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 16 } },
+                    { date: "2019-06-14", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 31 } },
+                ]
+            },
+        ];
+        expect(() => {
+            getScreentimeAlertList('sam_j_1989', '2019-06-11')
+        }).toThrow("users should be an array");
+        expect(() => {
+            getScreentimeAlertList(users2, 2019)
+        }).toThrow("date should be a string");
+    })
+    // check that users is an array of objects
+    test('users should be an array of objects', () => {
+        const users3 = [
+            [
+                "beth_1234",
+                "Beth Smith",
+                [
+                    { date: "2019-05-01", usage: { twitter: 34, instagram: 22, facebook: 40 } },
+                    { date: "2019-05-02", usage: { twitter: 56, instagram: 40, facebook: 31 } },
+                    { date: "2019-05-03", usage: { twitter: 12, instagram: 15, facebook: 19 } },
+                    { date: "2019-05-04", usage: { twitter: 10, instagram: 56, facebook: 61 } },
+                ]
+            ]
+        ];
+        expect(() => {
+            getScreentimeAlertList(users3, '2019-05-01')
+        }).toThrow("users should be an array of objects")
+    });
+    // check that object has only 3 props (username, name, screenTime)
+    test('every user should only have 3 props (username, name, screenTime)', () => {
+        const users4 = [
+            {
+                username: "sam_j_1989",
+                name: "Sam Jones",
+                screenTime: [
+                    { date: "2019-06-11", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 10 } },
+                    { date: "2019-06-13", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 16 } },
+                    { date: "2019-06-14", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 31 } },
+                ],
+                dateOfBirth: "120589"
+            }
+        ];
+        expect(() => {
+            getScreentimeAlertList(users4, "2019-06-11")
+        }).toThrow("every user can only have 3 props");
+        const users5 = [
+            {
+                username: "sam_j_1989",
+                fullName: "Sam Jones",
+                screenTime: [
+                    { date: "2019-06-11", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 10 } },
+                    { date: "2019-06-13", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 16 } },
+                    { date: "2019-06-14", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 31 } },
+                ]
+            }
+        ];
+        expect(() => {
+            getScreentimeAlertList(users5, "2019-06-11")
+        }).toThrow("every user can only have props called username, name and screenTime")
+    });
+    // check screenTime is an array of objects
+    test('users should be an array of objects', () => {
+        const users6 = [
+            {
+                username: "sam_j_1989",
+                name: "Sam Jones",
+                screenTime: "2019-05-02"
+            }
+        ];
+        expect(() => {
+            getScreentimeAlertList(users6, '2019-05-01')
+        }).toThrow("screenTime should be an array")
+    });
+    // objects should only have 2 props (date and usage)
+    test('objects should only have 2 props (date and usage)', () => {
+        const users7 = [
+            {
+                username: "sam_j_1989",
+                name: "Sam Jones",
+                screenTime: [
+                    { date: "2019-06-11", usage: { facebook: 15 }, device: 'phone'}
+                ]
+            }
+        ];
+        expect(() => {
+            getScreentimeAlertList(users7, '2019-05-01')
+        }).toThrow("every screenRecord can only have 2 props");
+        const users8 = [
+            {
+                username: "sam_j_1989",
+                name: "Sam Jones",
+                screenTime: [
+                    { fullDate: "2019-06-11", websites: { facebook: 15 }}
+                ]
+            }
+        ];
+        expect(() => {
+            getScreentimeAlertList(users8, '2019-05-01')
+        }).toThrow("every screenRecord can only have props date and usage");
+    });
+    // no one is above 100 mins => []
+    test('no user is above 100 mins, returns []', () => {
+        const users9 = [
+            {
+                username: "sam_j_1989",
+                name: "Sam Jones",
+                screenTime: [
+                    { date: "2019-06-11", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 10 } },
+                    { date: "2019-06-13", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 16 } },
+                    { date: "2019-06-14", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 31 } },
+                ]
+            }
+        ];
+        expect(
+            getScreentimeAlertList(users9, '2019-06-14')
+        ).toEqual([])
+    });
+    // comment example, ==> ["beth_1234"]
+    test("should return ['beth_1234']", () => {
+        const users10 = [
+              {
+                username: "beth_1234",
+                name: "Beth Smith",
+                screenTime: [
+                             { date: "2019-05-01", usage: { twitter: 34, instagram: 22, facebook: 40} },
+                             { date: "2019-05-02", usage: { twitter: 56, instagram: 40, facebook: 31} },
+                             { date: "2019-05-03", usage: { twitter: 12, instagram: 15, facebook: 19} },
+                             { date: "2019-05-04", usage: { twitter: 10, instagram: 56, facebook: 61} },
+                            ]
+               },
+               {
+                username: "sam_j_1989",
+                name: "Sam Jones",
+                screenTime: [
+                             { date: "2019-06-11", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 10} },
+                             { date: "2019-06-13", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 16} },
+                             { date: "2019-06-14", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 31} },
+                            ]
+               },
+             ]
+        expect(
+            getScreentimeAlertList(users10, '2019-05-04')
+        ).toEqual(['beth_1234']);
+    });
+    // date not available, ==> []
+    test("date not available, returns []", () => {
+        const users10 = [
+              {
+                username: "beth_1234",
+                name: "Beth Smith",
+                screenTime: [
+                             { date: "2019-05-01", usage: { twitter: 34, instagram: 22, facebook: 40} },
+                             { date: "2019-05-02", usage: { twitter: 56, instagram: 40, facebook: 31} },
+                             { date: "2019-05-03", usage: { twitter: 12, instagram: 15, facebook: 19} },
+                             { date: "2019-05-04", usage: { twitter: 10, instagram: 56, facebook: 61} },
+                            ]
+               },
+               {
+                username: "sam_j_1989",
+                name: "Sam Jones",
+                screenTime: [
+                             { date: "2019-06-11", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 10} },
+                             { date: "2019-06-13", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 16} },
+                             { date: "2019-06-14", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 31} },
+                            ]
+               },
+             ]
+        expect(
+            getScreentimeAlertList(users10, '2019-03-01')
+        ).toEqual([]);
     });
 })
